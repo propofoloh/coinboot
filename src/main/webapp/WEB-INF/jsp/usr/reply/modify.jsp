@@ -36,38 +36,6 @@
         </colgroup>
         <tbody>
           <tr>
-            <th>게시물 번호</th>
-            <td>${reply.relId}</td>
-          </tr>
-          <tr>
-            <th>게시물 제목</th>
-            <td>${relDataTitle}</td>
-          </tr>
-          <tr>
-            <th>댓글번호</th>
-            <td>
-              <div class="badge badge-primary">${reply.id}</div>
-            </td>
-          </tr>
-          <tr>
-            <th>댓글작성날짜</th>
-            <td>${reply.forPrintType2RegDate}</td>
-          </tr>
-          <tr>
-            <th>댓글수정날짜</th>
-            <td>${reply.forPrintType2UpdateDate}</td>
-          </tr>
-          <tr>
-            <th>댓글작성자</th>
-            <td>${reply.extra__writerName}</td>
-          </tr>
-          <tr>
-            <th>댓글추천</th>
-            <td>
-              <span class="badge badge-primary">${reply.goodReactionPoint}</span>
-            </td>
-          </tr>
-          <tr>
             <th>댓글내용</th>
             <td>
               <textarea class="w-full textarea textarea-bordered" name="body" rows="5" placeholder="내용">${reply.body}</textarea>
@@ -83,6 +51,7 @@
         </tbody>
       </table>
     </form>
+   </div>
 </section>
 
 <%@ include file="../common/foot.jspf"%>

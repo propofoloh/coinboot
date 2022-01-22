@@ -1,67 +1,42 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<c:set var="pageTitle" value="${board.name} 게시물 리스트" />
+<c:set var="pageTitle" value="${board.name} 게시판" />
 <%@ include file="../common/head.jspf"%>
 
 <section class="mt-5">
   <div class="container mx-auto px-3">
-    <div class="flex">
-      <div>
-        게시물 개수 : <span class="badge badge-primary">${articlesCount}</span>개
-      </div>
-      <div class="flex-grow"></div>
-      <form class="flex">
-        <input type="hidden" name="boardId" value="${param.boardId}" />
-      
-        <select data-value="${param.searchKeywordTypeCode}" name="searchKeywordTypeCode" class="select select-bordered">
-          <option disabled="disabled">검색타입</option>
-          <option value="title">제목</option>
-          <option value="body">내용</option>
-          <option value="title,body">제목,내용</option>
-        </select>
-        
-        <input name="searchKeyword" type="text" class="ml-2 w-72 input input-bordered" placeholder="검색어" maxlength="20" value="${param.searchKeyword}" />
-        
-        <button type="submit" class="ml-2 btn btn-primary">검색</button>
-      </form>
-    </div>
     <div class="mt-3">
       <table class="table table-fixed w-full">
         <colgroup>
-          <col width="50" />
-          <col width="100" />
-          <col width="100" />
-          <col width="50" />
-          <col width="50" />
-          <col width="150" />
+          <col width="50px" />
+          <col width="50%" />
+          <col width="30%" />
+          <col width="100px" />
+          <col width="10%" />
           <col />
         </colgroup>
         <thead>
-          <tr>
+          <tr style="text-align: center;">
             <th>번호</th>
-            <th>작성날짜</th>
-            <th>수정날짜</th>
-            <th>조회</th>
-            <th>추천</th>
-            <th>작성자</th>
             <th>제목</th>
+            <th>작성날짜</th>
+            <th>조회</th>
+            <th>작성자</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody style="text-align: center;">
           <c:forEach var="article" items="${articles}">
             <tr>
               <th>${article.id}</th>
-              <td>${article.forPrintType1RegDate}</td>
-              <td>${article.forPrintType1UpdateDate}</td>
-              <td>${article.hitCount}</td>
-              <td>${article.goodReactionPoint}</td>
-              <td>${article.extra__writerName}</td>
               <td>
                 <a class="btn-text-link block w-full truncate" href="../article/detail?id=${article.id}">
                   ${article.title}
                 </a>
               </td>
+              <td>${article.forPrintType1RegDate}</td>
+              <td>${article.hitCount}</td>
+              <td>${article.extra__writerName}</td>
             </tr>
           </c:forEach>
         </tbody>
@@ -95,7 +70,24 @@
         </c:if>
       </div>
     </div>
-
+    
+    <div class="flex" style="margin-bottom: 20px;">
+      <div class="flex-grow"></div>
+      <form class="flex">
+        <input type="hidden" name="boardId" value="${param.boardId}" />
+      
+        <select data-value="${param.searchKeywordTypeCode}" name="searchKeywordTypeCode" class="select select-bordered">
+          <option disabled="disabled">검색타입</option>
+          <option value="title">제목</option>
+          <option value="body">내용</option>
+          <option value="title,body">제목,내용</option>
+        </select>
+        
+        <input name="searchKeyword" type="text" class="ml-2 w-72 input input-bordered" placeholder="검색어" maxlength="20" value="${param.searchKeyword}" />
+        
+        <button type="submit" class="ml-2 btn btn-primary">검색</button>
+      </form>
+    </div>
   </div>
 </section>
 

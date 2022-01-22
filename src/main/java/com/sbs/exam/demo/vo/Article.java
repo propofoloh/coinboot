@@ -23,22 +23,22 @@ public class Article {
 	private boolean extra__actorCanDelete;
 	
 	public String getForPrintType1RegDate() {
-		return regDate.substring(2, 16).replace(" ", "<br>");
+		return regDate;
 	}
 	
 	public String getForPrintType1UpdateDate() {
-		return updateDate.substring(2, 16).replace(" ", "<br>");
+		return updateDate;
 	}
 	
 	public String getForPrintType2RegDate() {
-		return regDate.substring(2, 16);
+		return regDate;
 	}
 	
 	public String getForPrintType2UpdateDate() {
-		return regDate.substring(2, 16);
+		return regDate;
 	}
 	
 	public String getForPrintBody() {
-		return body.replaceAll("\n", "<br>");
+		return body;
 	}
 }

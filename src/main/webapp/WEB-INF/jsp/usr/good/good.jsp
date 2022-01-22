@@ -34,3 +34,4 @@
                     class="btn btn-xs btn-secondary"> 싫어요 👎 </a>
                 </c:if>
               </div>
+             </div>
