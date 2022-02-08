@@ -4,6 +4,7 @@
 <html lang="ko" class="light" data-theme="light">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>${pageTitle}</title>
 
 <!-- 제이쿼리 불러오기 -->
@@ -45,8 +46,13 @@
           </a>
         </li>
         <li>
-          <a class="h-full flex px-3 items-center hover:underline" href="/usr/article/list?boardId=1">
-            <span>공지시항 게시판</span>
+          <a class="h-full flex px-3 items-center hover:underline" href="/usr/article/list?boardId=4">
+            <span>자유 게시판</span>
+          </a>
+        </li>
+        <li>
+          <a class="h-full flex px-3 items-center hover:underline" href="/usr/article/list?boardId=3">
+            <span>코인 게시판</span>
           </a>
         </li>
         <c:if test="${rq.loginedMember.authLevel == '7' }">

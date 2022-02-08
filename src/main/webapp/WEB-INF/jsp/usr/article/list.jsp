@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <c:set var="pageTitle" value="${board.name} 게시판" />
 <%@ include file="../common/head.jspf"%>
@@ -71,7 +72,7 @@
       </div>
     </div>
     
-    <div class="flex" style="margin-bottom: 20px;">
+    <div class="flex" style="margin-bottom: 20px; margin-top: 20px;">
       <div class="flex-grow"></div>
       <form class="flex">
         <input type="hidden" name="boardId" value="${param.boardId}" />

@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <script type="text/javascript" src="/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <c:set var="pageTitle" value="게시물 작성" />
 <%@ include file="../common/head.jspf"%>

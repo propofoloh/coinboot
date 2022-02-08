@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>비트코인 선물 거래 사이트 모음 </title>
 </head>
 <style>
