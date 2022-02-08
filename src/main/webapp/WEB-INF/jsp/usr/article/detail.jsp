@@ -74,7 +74,9 @@
 </section>
 
 <section class="mt-5">
-<%@ include file="../reply/reply.jsp"%>
+<div style="margin-bottom: 10px;">
+	<%@ include file="../reply/reply.jsp"%>
+</div>
 </section>
 
 <%@ include file="../common/foot.jspf"%>

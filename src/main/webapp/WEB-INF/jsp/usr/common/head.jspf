@@ -55,6 +55,11 @@
             <span>코인 게시판</span>
           </a>
         </li>
+        <li>
+          <a class="h-full flex px-3 items-center hover:underline" href="/usr/article/list?boardId=5">
+            <span>정보 공유 게시판</span>
+          </a>
+        </li>
         <c:if test="${rq.loginedMember.authLevel == '7' }">
         <li>
           <a class="h-full flex px-3 items-center hover:underline" href="/usr/article/write">

@@ -28,6 +28,9 @@
                 <option selected disabled>게시판을 선택해주세요.</option>
                 <option value="1">공지</option>
                 <option value="2">유머</option>
+                <option value="3">코인</option>
+                <option value="4">자유</option>
+                <option value="5">정보 공유</option>
               </select>
               <!--
               <label>
