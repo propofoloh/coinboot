@@ -28,11 +28,11 @@
         </tbody>
       </table>
       	<div style="margin-top:10px; text-align: center;">
-     	  <a href="../member/join">회원가입</a>
-	       <div style="margin-top:10px; text-align: center;">
+	       <div style="margin-bottom:10px; text-align: center;">
 	         <button type="submit" class="btn btn-primary">로그인</button>
 	         <button type="button" class="btn btn-outline btn-secondary" onclick="history.back();">뒤로가기</button>
 	       </div>
+	       <a href="../member/join">회원가입</a>
 	    </div>
     </form>
   </div>
