@@ -66,11 +66,51 @@
 <br>
 <br>
 <br>
+
 		<div id="contents">
 			<%@ include file="../good/good.jsp"%>
 		</div>
     </div>
   </div>
+</section>
+
+<section class="mt-5">
+    <div class="mt-3">
+      <table class="table table-fixed w-full">
+        <colgroup>
+          <col width="50px" />
+          <col width="50%" />
+          <col width="30%" />
+          <col width="100px" />
+          <col width="10%" />
+          <col />
+        </colgroup>
+        <thead>
+          <tr style="text-align: center;">
+            <th>번호</th>
+            <th>제목</th>
+            <th>작성날짜</th>
+            <th>조회</th>
+            <th>작성자</th>
+          </tr>
+        </thead>
+        <tbody style="text-align: center;">
+          <c:forEach var="article" items="${articles}">
+            <tr>
+              <th>${article.id}</th>
+              <td>
+                <a class="btn-text-link block w-full truncate" href="../article/detail?id=${article.id}">
+                  ${article.title}
+                </a>
+              </td>
+              <td>${article.forPrintType1RegDate}</td>
+              <td>${article.hitCount}</td>
+              <td>${article.extra__writerName}</td>
+            </tr>
+          </c:forEach>
+        </tbody>
+      </table>
+    </div>
 </section>
 
 <section class="mt-5">
