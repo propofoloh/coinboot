@@ -37,6 +37,8 @@
   })
 </script>
 
+<div id='wrapper'>
+
 <section class="mt-5">
   <div class="container mx-auto px-3">
     <div class="table-box-type-1">
@@ -120,3 +122,4 @@
 </section>
 
 <%@ include file="../common/foot.jspf"%>
+</div>

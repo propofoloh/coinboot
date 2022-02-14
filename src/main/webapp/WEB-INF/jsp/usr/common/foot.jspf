@@ -1,5 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-  </main>
-</body>
-</html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <footer>
+      <nav>
+          <a href='https://cocoder.tistory.com' target='_blank'>Blog</a> |
+          <a href='https://github.com/cocoder16' target='_blank'>Github</a>
+      </nav>
+      <p>
+          <span>저자 : cocoder</span><br/>
+          <span>이메일 : cocoder16@gmail.com</span><br/>
+          <span>Copyright 2020. cocoder. All Rights Reserved.</span>
+      </p>
+  </footer>
