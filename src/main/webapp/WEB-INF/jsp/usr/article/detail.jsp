@@ -40,8 +40,8 @@
 <div id='wrapper'>
 
 <section class="mt-5">
-  <div class="container mx-auto px-3">
-    <div class="table-box-type-1">
+  <div style="width:95%; margin : 0 auto; text-align:center;">
+    <div class="table-box-type-1" style="font-size: 23px;">
     	<div>
     		${article.title}
     	</div>

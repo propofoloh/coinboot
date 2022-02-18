@@ -2,14 +2,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <footer>
+    <footer style="font-size: 9px; color: black; background-color: rgba(128, 128, 128, 0.5); text-align: center;">
       <nav>
-          <a href='https://cocoder.tistory.com' target='_blank'>Blog</a> |
-          <a href='https://github.com/cocoder16' target='_blank'>Github</a>
       </nav>
       <p>
-          <span>저자 : cocoder</span><br/>
-          <span>이메일 : cocoder16@gmail.com</span><br/>
-          <span>Copyright 2020. cocoder. All Rights Reserved.</span>
+          <span>위 내용에 대한 저작권 및 법적 책임은 자료제공사 또는 글쓴이에 있으며 사이트 운영자의 입장과 다를 수 있습니다.</span><br/>
+          <span>이메일 : propofoloh@gmail.com</span><br/>
+          <span>Copyright propofoloh All Rights Reserved.</span>
       </p>
   </footer>

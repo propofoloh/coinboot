@@ -8,10 +8,10 @@
 <c:set var="pageTitle" value="${board.name} 게시판" />
 <%@ include file="../common/head.jspf"%>
 
-<section class="mt-5">
+<section class="mt-5" style="font-size: 25px;">
   <div class="container mx-auto px-3">
     <div class="mt-3">
-      <table class="table table-fixed w-full">
+      <table class="table table-fixed w-full" style="font-size: 25px;">
         <colgroup>
           <col width="50px" />
           <col width="50%" />
@@ -21,7 +21,7 @@
           <col />
         </colgroup>
         <thead>
-          <tr style="text-align: center;">
+          <tr style="text-align: center; font-size: 25px;">
             <th>번호</th>
             <th>제목</th>
             <th>작성날짜</th>
@@ -29,7 +29,7 @@
             <th>작성자</th>
           </tr>
         </thead>
-        <tbody style="text-align: center;">
+        <tbody style="text-align: center; font-size: 20px;">
           <c:forEach var="article" items="${articles}">
             <tr>
               <th>${article.id}</th>
