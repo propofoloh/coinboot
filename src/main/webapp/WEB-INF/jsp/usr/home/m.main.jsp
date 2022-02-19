@@ -6,11 +6,11 @@
 <div id='wrapper'>
 
 <c:set var="pageTitle" value="메인" />
-<%@ include file="../common/head.jspf"%>
+<%@ include file="../common/mhead.jspf"%>
 
 <section class="mt-5">
   <div class="container mx-auto px-3" style="font-size:20px;">
-   <a href="/usr/home/m.main">모바일로 사용</a>
+    hihi.
   </div>
 </section>
 
