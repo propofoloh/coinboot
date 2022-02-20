@@ -6,7 +6,7 @@
 <div id='wrapper'>
 
 <c:set var="pageTitle" value="메인" />
-<%@ include file="../common/mhead.jspf"%>
+<%@ include file="../common/head.jspf"%>
 
 <section class="mt-5">
   <div class="container mx-auto px-3" style="font-size:20px;">

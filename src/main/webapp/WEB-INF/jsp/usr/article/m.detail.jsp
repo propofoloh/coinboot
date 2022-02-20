@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 <c:set var="pageTitle" value="자유 게시판" />
 <%@ include file="../common/head.jspf"%>
@@ -42,8 +40,8 @@
 <div id='wrapper'>
 
 <section class="mt-5">
-<div class="container">
-    <div class="table-box-type-1" style="font-size: 23px; text-align:center;">
+  <div style="width:95%; margin : 0 auto; text-align:center;">
+    <div class="table-box-type-1" style="font-size: 23px;">
     	<div>
     		${article.title}
     	</div>
@@ -64,7 +62,7 @@
 	      </c:if>
 		</div>
 
-		<div style="margin-top: 30px; width:95%%;">
+		<div style="margin-top: 30px;">
               		 ${article.forPrintBody}
 		</div>
 <br>
