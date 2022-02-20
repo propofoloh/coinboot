@@ -14,8 +14,10 @@ import org.jsoup.nodes.Element;
 public class paser {
 	
 	public static void main(String[] args) {
+		
+		java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
 
-		String url = "jdbc:mysql://localhost:3306/sb_c_2021_2nd_t";
+		String url = "jdbc:mysql://ls-a8f0ab1c2fff58b463fa2f5db70ef70f92ff71ea.cur6vfnjyk64.ap-northeast-2.rds.amazonaws.com:3306/sb_c_2021_2nd_t";
 		String user = "sb";
 		String password = "1234";
 		
@@ -32,8 +34,8 @@ public class paser {
 			conn = DriverManager.getConnection(url, user, password);
 			System.out.println("연결 성공");
 			
-			for(long i=1129717L; i<=1129717L; i ++) {
-			String URL = "https://www.jjang0u.com/board/view/fun/15249406/1"  ;
+			for(long i=15252094L; i<=15252097L; i ++) {
+			String URL = "https://www.jjang0u.com/board/view/fun/"  + i + "/1";
 			org.jsoup.Connection conn2 = Jsoup.connect(URL);
 			
 			System.out.println(URL); // URL 출력
@@ -53,11 +55,18 @@ public class paser {
 			String contents = ele2.html();	
 			System.out.println(ele2.html());    
 
-			String sql = "INSERT INTO TESTTABLE (BODY, CONTENTS) VALUES (?, ?)";
+			String sql = "INSERT INTO ARTICLE (id, regDate, updateDate, memberId, boardId, title, body, hitCount, goodReactionPoint, badReactionPoint) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			
             pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, title);
-            pstmt.setString(2, contents);
+            pstmt.setTimestamp(1, date);
+            pstmt.setTimestamp(2, date);
+            pstmt.setString(3, "1");
+            pstmt.setString(4, "2");
+            pstmt.setString(5, title);
+            pstmt.setString(6, contents);
+            pstmt.setString(7, "100");
+            pstmt.setString(8, "100");
+            pstmt.setString(9, "0");
             
             pstmt.executeUpdate();
             System.out.println(sql);
