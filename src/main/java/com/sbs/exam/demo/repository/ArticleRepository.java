@@ -33,9 +33,20 @@ public interface ArticleRepository {
 
 	public void modifyArticle(@Param("id") int id, @Param("title") String title, @Param("body") String body);
 
+	//리스트 조회
 	@Select("""
 			<script>
-			SELECT A.*,
+			SELECT 
+				A.id,
+				DATE_FORMAT(A.regDate,'%m.%d/%h:%m') AS regDate,
+				A.updateDate,
+				A.memberId,
+				A.boardId,
+				A.title,
+				A.body,
+				A.hitCount,
+				A.goodReactionPoint,
+				A.badReactionPoint,
 			M.nickname AS extra__writerName
 			FROM article AS A
 			LEFT JOIN `member` AS M

@@ -2,8 +2,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<c:set var="pageTitle" value="자유 게시판" />
-<%@ include file="../common/head.jspf"%>
 
 <script>
   const params = {};
@@ -37,15 +35,33 @@
   })
 </script>
 
+<style>
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+</style>
+
+<div class="container">
+
+<c:set var="pageTitle" value="${board.name} 게시판" />
+<%@ include file="../common/head.jspf"%>
+
 <div id='wrapper'>
 
 <section class="mt-5">
   <div style="width:95%; margin : 0 auto; text-align:center;">
-    <div class="table-box-type-1" style="font-size: 23px;">
+    <div class="table-box-type-1" style="font-size: 25px;">
     	<div>
     		${article.title}
     	</div>
-    	<div  style="font-size:12px;">
+    	<div  style="font-size:25px;">
     		${article.extra__writerName} | 
     		${article.forPrintType2RegDate} |
     		조회수 : ${article.hitCount}
@@ -62,7 +78,7 @@
 	      </c:if>
 		</div>
 
-		<div style="margin-top: 30px;">
+		<div style="margin-top: 50px;">
               		 ${article.forPrintBody}
 		</div>
 <br>
@@ -76,43 +92,8 @@
   </div>
 </section>
 
-<section class="mt-5">
-    <div class="mt-3">
-      <table class="table table-fixed w-full">
-        <colgroup>
-          <col width="50px" />
-          <col width="50%" />
-          <col width="30%" />
-          <col width="100px" />
-          <col width="10%" />
-          <col />
-        </colgroup>
-        <thead>
-          <tr style="text-align: center;">
-            <th>번호</th>
-            <th>제목</th>
-            <th>작성날짜</th>
-            <th>조회</th>
-            <th>작성자</th>
-          </tr>
-        </thead>
-        <tbody style="text-align: center;">
-          <c:forEach var="article" items="${articles}">
-            <tr>
-              <th>${article.id}</th>
-              <td>
-                <a class="btn-text-link block w-full truncate" href="../article/detail?id=${article.id}">
-                  ${article.title}
-                </a>
-              </td>
-              <td>${article.forPrintType1RegDate}</td>
-              <td>${article.hitCount}</td>
-              <td>${article.extra__writerName}</td>
-            </tr>
-          </c:forEach>
-        </tbody>
-      </table>
-    </div>
+<section class="mt-5" style="font-size: 25px;">
+<!--목록보 -->
 </section>
 
 <section class="mt-5">
@@ -122,4 +103,5 @@
 </section>
 
 <%@ include file="../common/foot.jspf"%>
+</div>
 </div>

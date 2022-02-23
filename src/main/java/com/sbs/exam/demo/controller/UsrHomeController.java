@@ -17,6 +17,11 @@ public class UsrHomeController {
 		return "usr/home/m.main";
 	}
 	
+	@RequestMapping("/usr/article/test")
+	public String mshowTest() {
+		return "usr/article/test";
+	}
+	
 	
 	@RequestMapping("/")
 	public String showRoot() {

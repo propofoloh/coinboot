@@ -45,3 +45,12 @@ footer p span {
   display: inline-block;
   margin-left: 20px;
 }
+
+.txt_line { 
+	width:7px; 
+	padding:0 5px; 
+	overflow:hidden; 
+	text-overflow:ellipsis; 
+	white-space:nowrap; 
+}
+
