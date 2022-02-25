@@ -14,7 +14,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 
-public class dd {
+public class linkPaser {
 	
     public static void main(final String[] args) throws IOException{
     	
