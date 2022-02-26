@@ -6,60 +6,41 @@
 <%@ include file="../common/head.jspf"%>
 
 <section class="mt-5">
-  <div class="container mx-auto px-3">
-    <form class="table-box-type-1" method="POST" action="../member/doJoin">
-      <table>
-        <colgroup>
-          <col width="200" />
-        </colgroup>
-        <tbody>
-          <tr>
-            <th>로그인아이디</th>
-            <td>
-              <input name="loginId" class="w-96 input input-bordered" type="text" placeholder="로그인아이디를 입력해주세요." />
-            </td>
-          </tr>
-          <tr>
-            <th>로그인비밀번호</th>
-            <td>
-              <input name="loginPw" class="w-96 input input-bordered" type="password" placeholder="로그인비밀번호를 입력해주세요." />
-            </td>
-          </tr>
-          <tr>
-            <th>이름</th>
-            <td>
-              <input name="name" class="w-96 input input-bordered" type="text" placeholder="이름을 입력해주세요." />
-            </td>
-          </tr>
-          <tr>
-            <th>별명</th>
-            <td>
-              <input name="nickname" class="w-96 input input-bordered" type="text" placeholder="별명을 입력해주세요." />
-            </td>
-          </tr>
-          <tr>
-            <th>휴대전화번호</th>
-            <td>
-              <input name="cellphoneNo" class="w-96 input input-bordered" type="text" placeholder="휴대전화번호를 입력해주세요." />
-            </td>
-          </tr>
-          <tr>
-            <th>이메일</th>
-            <td>
-              <input name="email" class="w-96 input input-bordered" type="email" placeholder="이메일을 입력해주세요." />
-            </td>
-          </tr>
-          <tr>
-            <th>회원가입</th>
-            <td>
-              <button type="submit" class="btn btn-primary">회원가입</button>
-              <button type="button" class="btn btn-outline btn-secondary" onclick="history.back();">뒤로가기</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </form>
-  </div>
+	<div class="container login-container">
+		<div class="col-md-6 login-form-1" style="text-align: center;">
+		    <form class="table-box-type-1" method="POST" action="../member/doJoin">
+		        <div class="form-group">
+		        	<label for="loginId">아이디 </label><br>
+		            <input name="loginId" class="w-96 input input-bordered" type="text" placeholder="아이디를 입력해주세요." />
+		        </div>
+		        <div class="form-group">
+		        	<label for="loginPw">패스워드 </label><br>
+		            <input name="loginPw" class="w-96 input input-bordered" type="password" placeholder="패스워드를 입력해주세요." />
+		        </div>
+		        <div class="form-group">
+		        	<label for="name">이름 </label><br>
+		            <input name="name" class="w-96 input input-bordered" type="text" placeholder="이름 입력해주세요." />
+		        </div>
+		        <div class="form-group">
+		            <label for="nickname">닉네임 </label><br>
+		            <input name="nickname" class="w-96 input input-bordered" type="text" placeholder="닉네임 입력해주세요." />
+		        </div>
+		        <div class="form-group">
+		        	<label for="cellphoneNo">전화번호 </label><br>
+		            <input name="cellphoneNo" class="w-96 input input-bordered" type="text" placeholder="전화번호를 입력해주세요." />
+		        </div>
+		        <div class="form-group">
+		        	<label for="email">이메일 </label><br>
+					<input name="email" class="w-96 input input-bordered" type="email" placeholder="이메일 입력해주세요." />
+		        </div>
+		        
+		        <div class="form-group" style="text-align: center;">
+			        <button type="submit" class="btn btn-primary">회원가입</button>
+	             	<button type="button" class="btn btn-outline btn-secondary" onclick="history.back();">뒤로가기</button>
+		        </div>
+		    </form>
+		</div>
+	</div>
 </section>
 
 <%@ include file="../common/foot.jspf"%>

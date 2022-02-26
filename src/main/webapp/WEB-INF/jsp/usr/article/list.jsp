@@ -3,8 +3,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<link rel="stylesheet" href="../css.csss">
+<link rel="stylesheet" href="../css.css">
 
+<div class="container">
 <div id='wrapper'>
 
 <c:set var="pageTitle" value="${board.name} 게시판" />
@@ -98,4 +99,5 @@
 </section>
 
 <%@ include file="../common/foot.jspf"%>
+</div>
 </div>

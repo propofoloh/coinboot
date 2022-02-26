@@ -48,22 +48,20 @@ video {
 }
 </style>
 
-<div class="container">
-
-<c:set var="pageTitle" value="${board.name} 게시판" />
 <%@ include file="../common/head.jspf"%>
+
+<div class="container">
 
 <div id='wrapper'>
 
-<section class="mt-5">
-  <div style="width:95%; margin : 0 auto; text-align:center;">
+  <div style="width:100%; margin : 0 auto; text-align:center;">
     <div class="table-box-type-1" style="font-size: 25px;">
     	<div>
     		${article.title}
     	</div>
-    	<div  style="font-size:25px;">
-    		${article.extra__writerName} | 
-    		${article.forPrintType2RegDate} |
+    	<div  style="font-size:10px;">
+    		${article.extra__writerName}  
+    		${article.forPrintType2RegDate} 
     		조회수 : ${article.hitCount}
     	</div>
     	<hr style="border: solid 1px gray;">
@@ -78,7 +76,7 @@ video {
 	      </c:if>
 		</div>
 
-		<div style="margin-top: 50px;">
+		<div style="margin-top: 50px; font-size: 15px;">
               		 ${article.forPrintBody}
 		</div>
 <br>
@@ -90,10 +88,9 @@ video {
 		</div>
     </div>
   </div>
-</section>
 
 <section class="mt-5" style="font-size: 25px;">
-<!--목록보 -->
+<!--목록보기 -->
 </section>
 
 <section class="mt-5">

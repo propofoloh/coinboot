@@ -1,4 +1,4 @@
-package a;
+package com.sbs.exam.demo.util;
 
 import java.io.IOException;
 import java.net.URL;
@@ -20,8 +20,8 @@ public class linkPaser {
     	
     	java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
     	
-		String db = "jdbc:mysql://127.0.0.1:3306/coindb";
-		String user = "coinuser";
+		String db = "jdbc:mysql://127.0.0.1:3306/sb_c_2021_2nd_t";
+		String user = "sb";
 		String password = "1234";
 		
 		Connection conn = null;
@@ -59,14 +59,19 @@ public class linkPaser {
 			System.out.println(ele2.html());
 			
 			//DB에 데이터를 넣음
-			String sql = "INSERT INTO article (id, regDate, updateDate, memberId, title, body) VALUES (NULL, ?, ?, ?, ?, ?)";				
-	        pstmt = conn.prepareStatement(sql);
-	        pstmt.setTimestamp(1, date);
-	        pstmt.setTimestamp(2, date);
-	        pstmt.setString(3, "1");
-	        pstmt.setString(4, title);
-	        pstmt.setString(5, contents);
-	        
+			String sql = "INSERT INTO article (id, regDate, updateDate, memberId, boardId, title, body, hitCount, goodReactionPoint, badReactionPoint) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setTimestamp(1, date);
+            pstmt.setTimestamp(2, date);
+            pstmt.setString(3, "1");
+            pstmt.setString(4, "2");
+            pstmt.setString(5, title);
+            pstmt.setString(6, contents);
+            pstmt.setString(7, "100");
+            pstmt.setString(8, "100");
+            pstmt.setString(9, "0");
+            
             pstmt.executeUpdate();
             System.out.println(sql + "\n*******************************************************************************");
 		    }
