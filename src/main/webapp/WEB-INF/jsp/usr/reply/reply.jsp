@@ -50,7 +50,7 @@ textarea{
         <input type="hidden" name="relId" value="${article.id}" />
         <div>
                 <textarea name="body" rows="2" placeholder="내용"></textarea>
-                <button type="submit" class="btn btn-primary" style="float: right;">댓글작성</button>
+                <button type="submit" class="btn btn-primary" style="float: right; margin-top: 10px;">댓글작성</button>
         </div>
       </form>
     </c:if>
@@ -62,7 +62,7 @@ textarea{
 
 <section class="mt-5">
   <div class="container mx-auto px-3">
-    <h1>댓글 (${replies.size()})</h1>
+    <h6>댓글 (${replies.size()})</h6>
 
     <table class="table table-fixed w-full">
       <colgroup>
@@ -77,12 +77,13 @@ textarea{
           	<div style="color: blue; font-size: 15px; font-weight: bold">
           		${reply.extra__writerName}
           	</div>
-          	<div style="font-size: 13px;">
+          	<div style="font-size: 14px;">
           		${reply.forPrintBody}
           	</div>
           	</td>
             <td style="font-size: 12px;">
-            	${reply.forPrintType1RegDate} - 
+            	${reply.forPrintType1RegDate}
+            	<br>
               <c:if test="${reply.extra__actorCanModify}">
                 <a href="../reply/modify?id=${reply.id}" style="color: blue;">수정</a>
               </c:if>

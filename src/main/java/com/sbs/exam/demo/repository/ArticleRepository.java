@@ -38,7 +38,6 @@ public interface ArticleRepository {
 			<script>
 			SELECT 
 				A.id,
-				DATE_FORMAT(A.regDate,'%m.%d/%h:%m') AS regDate,
 				A.updateDate,
 				A.memberId,
 				A.boardId,
@@ -47,7 +46,10 @@ public interface ArticleRepository {
 				A.hitCount,
 				A.goodReactionPoint,
 				A.badReactionPoint,
-			M.nickname AS extra__writerName
+			M.nickname AS extra__writerName,
+				CASE WHEN A.regdate > date_format(sysdate(), '%Y-%m-%d') THEN date_format(A.regDate, '%H:%i')
+					ELSE date_format(A.regDate, '%m-%d')
+				END regDate
 			FROM article AS A
 			LEFT JOIN `member` AS M
 			ON A.memberId = M.id

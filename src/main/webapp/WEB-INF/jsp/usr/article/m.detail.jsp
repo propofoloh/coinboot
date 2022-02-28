@@ -1,16 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-img {
-    width: 100%;
-    height: auto;
-}
-</style>
-
-<c:set var="pageTitle" value="자유 게시판" />
-<%@ include file="../common/head.jspf"%>
 
 <script>
   const params = {};
@@ -44,17 +35,31 @@ img {
   })
 </script>
 
-<div id='wrapper'>
+<style>
+img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+video {
+  width: 100%;
+  height: auto%;
+  object-fit: cover;
+}
+</style>
 
-<section class="mt-5">
-  <div style="width:95%; margin : 0 auto; text-align:center;">
-    <div class="table-box-type-1" style="font-size: 23px;">
+<%@ include file="../common/m.head.jspf"%>
+
+<div class="">
+
+  <div style="width:100%; margin : 0 auto; text-align:center;">
+    <div class="table-box-type-1" style="font-size: 25px;">
     	<div>
     		${article.title}
     	</div>
-    	<div  style="font-size:12px;">
-    		${article.extra__writerName} | 
-    		${article.forPrintType2RegDate} |
+    	<div  style="font-size:10px;">
+    		${article.extra__writerName}  
+    		${article.forPrintType2RegDate} 
     		조회수 : ${article.hitCount}
     	</div>
     	<hr style="border: solid 1px gray;">
@@ -69,7 +74,7 @@ img {
 	      </c:if>
 		</div>
 
-		<div style="margin-top: 30px;">
+		<div style="margin-top: 50px; font-size: 15px;">
               		 ${article.forPrintBody}
 		</div>
 <br>
@@ -81,45 +86,9 @@ img {
 		</div>
     </div>
   </div>
-</section>
 
-<section class="mt-5">
-    <div class="mt-3">
-      <table class="table table-fixed w-full">
-        <colgroup>
-          <col width="50px" />
-          <col width="50%" />
-          <col width="30%" />
-          <col width="100px" />
-          <col width="10%" />
-          <col />
-        </colgroup>
-        <thead>
-          <tr style="text-align: center;">
-            <th>번호</th>
-            <th>제목</th>
-            <th>작성날짜</th>
-            <th>조회</th>
-            <th>작성자</th>
-          </tr>
-        </thead>
-        <tbody style="text-align: center;">
-          <c:forEach var="article" items="${articles}">
-            <tr>
-              <th>${article.id}</th>
-              <td>
-                <a class="btn-text-link block w-full truncate" href="../article/detail?id=${article.id}">
-                  ${article.title}
-                </a>
-              </td>
-              <td>${article.forPrintType1RegDate}</td>
-              <td>${article.hitCount}</td>
-              <td>${article.extra__writerName}</td>
-            </tr>
-          </c:forEach>
-        </tbody>
-      </table>
-    </div>
+<section class="mt-5" style="font-size: 25px;">
+<!--목록보기 -->
 </section>
 
 <section class="mt-5">
@@ -127,6 +96,65 @@ img {
 	<%@ include file="../reply/reply.jsp"%>
 </div>
 </section>
+
+<div>
+<!-- <a href="/usr/article/list?boardId=2">목록</a> -->
+      <table class="table" style="table-layout: fixed;">
+        <colgroup>
+          <col width="20%" />
+          <col width="75%" />
+          <col width="25%" />
+        </colgroup>
+        <thead>
+          <tr style="text-align: center; font-size: 0.8em">
+            <th scope="col">번호</th>
+            <th scope="col">제목</th>
+            <th scope="col">작성일</th>
+          </tr>
+        </thead>
+        <tbody style="text-align: center;">
+          <c:forEach var="article" items="${articles}">
+            <tr>
+              <th style="font-weight: normal;">${article.id}</th>
+              <td style="text-overflow:ellipsis; overflow:hidden; white-space:nowrap;">
+                <a class="btn-text-link block w-full truncate" href="../article/detail?id=${article.id}">
+                  ${article.title}
+                </a>
+              </td>
+              <td style="font-size: 0.8em;">
+              ${article.forPrintType1RegDate}
+              </td>
+            </tr>
+          </c:forEach>
+        </tbody>
+      </table>
+      
+    <div class="text-center">
+        <c:set var="pageMenuArmLen" value="6" />
+        <c:set var="startPage" value="${page - pageMenuArmLen >= 1 ? page - pageMenuArmLen : 1}" />
+        <c:set var="endPage" value="${page + pageMenuArmLen <= pagesCount ? page + pageMenuArmLen : pagesCount}" />
+       
+        <c:set var="pageBaseUri" value="list?boardId=2" />
+        <c:set var="pageBaseUri" value="${pageBaseUri}&searchKeywordTypeCode=${param.searchKeywordTypeCode}" />
+        <c:set var="pageBaseUri" value="${pageBaseUri}&searchKeyword=${param.searchKeyword}" />
+        
+        <c:if test="${startPage > 1}">
+          <a class="btn btn-sm" href="${pageBaseUri}&page=1">1</a>
+          <c:if test="${startPage > 2}">          
+            <a class="btn btn-sm btn-disabled">...</a>
+          </c:if>
+        </c:if>
+        <c:forEach begin="${startPage}" end="${endPage}" var="i">
+          <a class="btn btn-sm ${page == i ? 'btn-active' : ''}" href="${pageBaseUri}&page=${i}">${i}</a>          
+        </c:forEach>
+        <c:if test="${endPage < pagesCount}">
+          <c:if test="${endPage < pagesCount - 1}">
+            <a class="btn btn-sm btn-disabled">...</a>
+          </c:if> 
+          <a class="btn btn-sm" href="${pageBaseUri}&page=${pagesCount}">${pagesCount}</a>
+        </c:if>
+      </div>
+</div>
 
 <%@ include file="../common/foot.jspf"%>
 </div>

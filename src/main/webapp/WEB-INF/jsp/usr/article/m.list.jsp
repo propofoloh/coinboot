@@ -1,56 +1,44 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<link rel="stylesheet" href="../css.csss">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="../css.css">
 
-<div id='wrapper'>
-
-<c:set var="pageTitle" value="${board.name} 게시판" />
-<%@ include file="../common/head.jspf"%>
+<%@ include file="../common/m.head.jspf"%>
 
 <section class="mt-5" style="font-size: 25px;">
-  <div class="container mx-auto px-3">
-    <div class="mt-3">
-      <table class="table table-striped table-hover" style="font-size: 25px;">
+      <table class="table" style="table-layout: fixed;">
         <colgroup>
-          <col width="50px" />
-          <col width="50%" />
-          <col width="30%" />
-          <col width="100px" />
-          <col width="10%" />
-          <col />
+          <col width="20%" />
+          <col width="75%" />
+          <col width="25%" />
         </colgroup>
         <thead>
-          <tr style="text-align: center; font-size: 25px;">
-            <th>번호</th>
-            <th>제목</th>
-            <th>작성날짜</th>
-            <th>조회</th>
-            <th>작성자</th>
+          <tr style="text-align: center; font-size: 0.8em">
+            <th scope="col">번호</th>
+            <th scope="col">제목</th>
+            <th scope="col">작성일</th>
           </tr>
         </thead>
-        <tbody style="text-align: center; font-size: 20px;">
+        <tbody style="text-align: center;">
           <c:forEach var="article" items="${articles}">
             <tr>
-              <th>${article.id}</th>
-              <td>
-                <a class="btn-text-link block w-full truncate" href="../article/detail?id=${article.id}">
+              <th style="font-weight: normal;">${article.id}</th>
+              <td style="text-overflow:ellipsis; overflow:hidden; white-space:nowrap;">
+                <a class="btn-text-link block w-full truncate" href="../article/m.detail?id=${article.id}">
                   ${article.title}
                 </a>
               </td>
-              <td>${article.forPrintType1RegDate}</td>
-              <td>${article.hitCount}</td>
-              <td>${article.extra__writerName}</td>
+              <td style="font-size: 0.8em;">
+              ${article.forPrintType1RegDate}
+              </td>
             </tr>
           </c:forEach>
         </tbody>
       </table>
-    </div>
 
-    <div class="page-menu mt-3">
-      <div class="pagination justify-content-center">
+    <div class="text-center">
         <c:set var="pageMenuArmLen" value="6" />
         <c:set var="startPage" value="${page - pageMenuArmLen >= 1 ? page - pageMenuArmLen : 1}" />
         <c:set var="endPage" value="${page + pageMenuArmLen <= pagesCount ? page + pageMenuArmLen : pagesCount}" />
@@ -75,9 +63,8 @@
           <a class="btn btn-sm" href="${pageBaseUri}&page=${pagesCount}">${pagesCount}</a>
         </c:if>
       </div>
-    </div>
     
-    <div class="flex" style="margin-bottom: 20px; margin-top: 20px;">
+    <div class="flex" style="margin-bottom: 20px; margin-top: 20px; margin-left: 10px;">
       <div class="flex-grow"></div>
       <form class="flex">
         <input type="hidden" name="boardId" value="${param.boardId}" />
@@ -89,13 +76,12 @@
           <option value="title,body">제목,내용</option>
         </select>
         
-        <input name="searchKeyword" type="text" class="ml-2 w-72 input input-bordered" placeholder="검색어" maxlength="20" value="${param.searchKeyword}" />
+        <input name="searchKeyword" type="text" class="ml-2 w-72 input input-bordered" style="margin-top:10px;"
+         placeholder="검색어" maxlength="20" value="${param.searchKeyword}" />
         
         <button type="submit" class="ml-2 btn btn-primary">검색</button>
       </form>
     </div>
-  </div>
 </section>
 
 <%@ include file="../common/foot.jspf"%>
-</div>

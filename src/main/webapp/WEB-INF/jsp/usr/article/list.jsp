@@ -8,50 +8,40 @@
 <div class="container">
 <div id='wrapper'>
 
-<c:set var="pageTitle" value="${board.name} 게시판" />
 <%@ include file="../common/head.jspf"%>
 
 <section class="mt-5" style="font-size: 25px;">
-  <div class="container mx-auto px-3">
-    <div class="mt-3">
-      <table class="table table-fixed w-full" style="font-size: 25px; table-layout: fixed">
+      <table class="table" style="table-layout: fixed;">
         <colgroup>
-          <col width="15%" />
-          <col width="45%" />
-          <col width="30%" />
-          <col width="15%" />
-          <col />
+          <col width="20%" />
+          <col width="75%" />
+          <col width="25%" />
         </colgroup>
         <thead>
-          <tr style="text-align: center; font-size: 25px;">
+          <tr style="text-align: center; font-size: 0.8em">
             <th scope="col">번호</th>
             <th scope="col">제목</th>
-            <th scope="col">작성날짜</th>
-            <th scope="col">조회</th>
+            <th scope="col">작성일</th>
           </tr>
         </thead>
-        <tbody style="text-align: center; font-size: 20px;">
+        <tbody style="text-align: center;">
           <c:forEach var="article" items="${articles}">
             <tr>
-              <th>${article.id}</th>
+              <th style="font-weight: normal;">${article.id}</th>
               <td style="text-overflow:ellipsis; overflow:hidden; white-space:nowrap;">
                 <a class="btn-text-link block w-full truncate" href="../article/detail?id=${article.id}">
                   ${article.title}
                 </a>
               </td>
-              <td>
+              <td style="font-size: 0.8em;">
               ${article.forPrintType1RegDate}
               </td>
-              <td>
-              ${article.hitCount}
             </tr>
           </c:forEach>
         </tbody>
       </table>
-    </div>
 
-    <div class="page-menu mt-3">
-      <div class="btn-group justify-center">
+    <div class="text-center">
         <c:set var="pageMenuArmLen" value="6" />
         <c:set var="startPage" value="${page - pageMenuArmLen >= 1 ? page - pageMenuArmLen : 1}" />
         <c:set var="endPage" value="${page + pageMenuArmLen <= pagesCount ? page + pageMenuArmLen : pagesCount}" />
@@ -76,9 +66,8 @@
           <a class="btn btn-sm" href="${pageBaseUri}&page=${pagesCount}">${pagesCount}</a>
         </c:if>
       </div>
-    </div>
     
-    <div class="flex" style="margin-bottom: 20px; margin-top: 20px;">
+    <div class="flex" style="margin-bottom: 20px; margin-top: 20px; margin-left: 10px;">
       <div class="flex-grow"></div>
       <form class="flex">
         <input type="hidden" name="boardId" value="${param.boardId}" />
@@ -90,12 +79,12 @@
           <option value="title,body">제목,내용</option>
         </select>
         
-        <input name="searchKeyword" type="text" class="ml-2 w-72 input input-bordered" placeholder="검색어" maxlength="20" value="${param.searchKeyword}" />
+        <input name="searchKeyword" type="text" class="ml-2 w-72 input input-bordered" style="margin-top:10px;"
+         placeholder="검색어" maxlength="20" value="${param.searchKeyword}" />
         
         <button type="submit" class="ml-2 btn btn-primary">검색</button>
       </form>
     </div>
-  </div>
 </section>
 
 <%@ include file="../common/foot.jspf"%>
