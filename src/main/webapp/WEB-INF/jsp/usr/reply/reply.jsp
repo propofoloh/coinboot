@@ -41,7 +41,7 @@ textarea{
 </script>
 
 <section>
-  <div class="container mx-auto px-3">
+  <div class="container">
 
     <c:if test="${rq.logined}">
       <form class="table-box-type-1" method="POST" action="../reply/doWrite"
@@ -60,8 +60,8 @@ textarea{
   </div>
 </section>
 
-<section class="mt-5">
-  <div class="container mx-auto px-3">
+<section>
+  <div>
     <h6>댓글 (${replies.size()})</h6>
 
     <table class="table table-fixed w-full">

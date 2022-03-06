@@ -2,7 +2,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
 <script>
   const params = {};
   params.id = parseInt('${param.id}');
@@ -52,7 +51,7 @@ video {
 
 <div class="">
 
-  <div style="width:100%; margin : 0 auto; text-align:center;">
+  <div style="width:95%; margin : 0 auto; text-align:center;">
     <div class="table-box-type-1" style="font-size: 25px;">
     	<div>
     		${article.title}
@@ -91,13 +90,27 @@ video {
 <!--목록보기 -->
 </section>
 
-<section class="mt-5">
-<div style="margin-bottom: 10px;">
-	<%@ include file="../reply/reply.jsp"%>
-</div>
+<section style="text-align: center;">
+<button class="btn btn-primary" style="width: 90%; margin-bottom: 10px;" type="button" data-toggle="collapse" data-target="#collapseExample" 
+aria-expanded="false" aria-controls="collapseExample">
+  댓글 보기
+</button>
+	<div class="collapse" id="collapseExample" style="margin-bottom: 10px;">
+	  <div class="well">
+		<%@ include file="../reply/reply.jsp"%>
+	  </div>
+	</div>
 </section>
 
 <div>
+	<c:if test="${nextArticleId != null}"> 
+	 <a href="../article/detail?id=${nextArticleId}&page=${page}">이전글</a>
+	</c:if>
+	
+	<c:if test="${previousArticleId != null}">
+	 <a href="../article/detail?id=${previousArticleId}&page=${page}">다음글</a>
+	</c:if> 
+	
 <!-- <a href="/usr/article/list?boardId=2">목록</a> -->
       <table class="table" style="table-layout: fixed;">
         <colgroup>
@@ -117,7 +130,7 @@ video {
             <tr>
               <th style="font-weight: normal;">${article.id}</th>
               <td style="text-overflow:ellipsis; overflow:hidden; white-space:nowrap;">
-                <a class="btn-text-link block w-full truncate" href="../article/detail?id=${article.id}">
+                <a href="../article/m.detail?id=${article.id}&page=${page}">
                   ${article.title}
                 </a>
               </td>
@@ -129,30 +142,32 @@ video {
         </tbody>
       </table>
       
-    <div class="text-center">
+    <div class="page-menu mt-3" style="text-align: center;">
+      <div class="btn-group justify-center">
         <c:set var="pageMenuArmLen" value="6" />
         <c:set var="startPage" value="${page - pageMenuArmLen >= 1 ? page - pageMenuArmLen : 1}" />
         <c:set var="endPage" value="${page + pageMenuArmLen <= pagesCount ? page + pageMenuArmLen : pagesCount}" />
        
-        <c:set var="pageBaseUri" value="list?boardId=2" />
+        <c:set var="pageBaseUri" value="m.list?boardId=2" />
         <c:set var="pageBaseUri" value="${pageBaseUri}&searchKeywordTypeCode=${param.searchKeywordTypeCode}" />
         <c:set var="pageBaseUri" value="${pageBaseUri}&searchKeyword=${param.searchKeyword}" />
         
         <c:if test="${startPage > 1}">
-          <a class="btn btn-sm" href="${pageBaseUri}&page=1">1</a>
+          <a class="btn btn-primary btn-lg" href="${pageBaseUri}&page=1">1</a>
           <c:if test="${startPage > 2}">          
-            <a class="btn btn-sm btn-disabled">...</a>
+            <a class="btn btn-primary btn-lg disabled">...</a>
           </c:if>
         </c:if>
         <c:forEach begin="${startPage}" end="${endPage}" var="i">
-          <a class="btn btn-sm ${page == i ? 'btn-active' : ''}" href="${pageBaseUri}&page=${i}">${i}</a>          
+          <a class="btn btn-primary btn-lg ${page == i ? 'active' : ''}" href="${pageBaseUri}&page=${i}">${i}</a>          
         </c:forEach>
         <c:if test="${endPage < pagesCount}">
           <c:if test="${endPage < pagesCount - 1}">
-            <a class="btn btn-sm btn-disabled">...</a>
+            <a class="btn btn-primary btn-lg disabled">...</a>
           </c:if> 
-          <a class="btn btn-sm" href="${pageBaseUri}&page=${pagesCount}">${pagesCount}</a>
+          <a class="btn btn-primary btn-lg" href="${pageBaseUri}&page=${pagesCount}">${pagesCount}</a>
         </c:if>
+       </div>
       </div>
 </div>
 

@@ -46,13 +46,17 @@ video {
   height: auto%;
   object-fit: cover;
 }
+a:hover {
+  color : red;
+}
+a:active {
+  color : green
+}
 </style>
 
-<c:set var="pageTitle" value="유머 게시판" />
 <%@ include file="../common/head.jspf"%>
 
-
-  <div style="width:100%; margin : 0 auto; text-align:center;">
+  <div style="width:90%; margin : 0 auto; text-align:center;">
     <div class="table-box-type-1" style="font-size: 25px;">
     	<div>
     		${article.title}
@@ -104,6 +108,14 @@ aria-expanded="false" aria-controls="collapseExample">
 </section>
 
 <div>
+	<c:if test="${nextArticleId != null}"> 
+	 <a href="../article/detail?id=${nextArticleId}&page=${page}">이전글</a>
+	</c:if>
+	
+	<c:if test="${previousArticleId != null}">
+	 <a href="../article/detail?id=${previousArticleId}&page=${page}">다음글</a>
+	</c:if> 
+ 
 <!-- <a href="/usr/article/list?boardId=2">목록</a> -->
       <table class="table" style="table-layout: fixed;">
         <colgroup>
@@ -123,7 +135,8 @@ aria-expanded="false" aria-controls="collapseExample">
             <tr>
               <th style="font-weight: normal;">${article.id}</th>
               <td style="text-overflow:ellipsis; overflow:hidden; white-space:nowrap;">
-                <a class="btn-text-link block w-full truncate" href="../article/detail?id=${article.id}">
+               <!--  <a class="btn-text-link block w-full truncate" href="../article/detail?id=${article.id}&page=${page}"> -->
+               <a href="../article/detail?id=${article.id}&page=${page}">
                   ${article.title}
                 </a>
               </td>
@@ -135,7 +148,8 @@ aria-expanded="false" aria-controls="collapseExample">
         </tbody>
       </table>
       
-    <div class="text-center">
+    <div class="page-menu mt-3" style="text-align: center;">
+      <div class="btn-group justify-center">
         <c:set var="pageMenuArmLen" value="6" />
         <c:set var="startPage" value="${page - pageMenuArmLen >= 1 ? page - pageMenuArmLen : 1}" />
         <c:set var="endPage" value="${page + pageMenuArmLen <= pagesCount ? page + pageMenuArmLen : pagesCount}" />
@@ -145,20 +159,21 @@ aria-expanded="false" aria-controls="collapseExample">
         <c:set var="pageBaseUri" value="${pageBaseUri}&searchKeyword=${param.searchKeyword}" />
         
         <c:if test="${startPage > 1}">
-          <a class="btn btn-sm" href="${pageBaseUri}&page=1">1</a>
+          <a class="btn btn-primary btn-lg" href="${pageBaseUri}&page=1">1</a>
           <c:if test="${startPage > 2}">          
-            <a class="btn btn-sm btn-disabled">...</a>
+            <a class="btn btn-primary btn-lg disabled">...</a>
           </c:if>
         </c:if>
         <c:forEach begin="${startPage}" end="${endPage}" var="i">
-          <a class="btn btn-sm ${page == i ? 'btn-active' : ''}" href="${pageBaseUri}&page=${i}">${i}</a>          
+          <a class="btn btn-primary btn-lg ${page == i ? 'active' : ''}" href="${pageBaseUri}&page=${i}">${i}</a>          
         </c:forEach>
         <c:if test="${endPage < pagesCount}">
           <c:if test="${endPage < pagesCount - 1}">
-            <a class="btn btn-sm btn-disabled">...</a>
+            <a class="btn btn-primary btn-lg disabled">...</a>
           </c:if> 
-          <a class="btn btn-sm" href="${pageBaseUri}&page=${pagesCount}">${pagesCount}</a>
+          <a class="btn btn-primary btn-lg" href="${pageBaseUri}&page=${pagesCount}">${pagesCount}</a>
         </c:if>
+       </div>
       </div>
 </div>
 

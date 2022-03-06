@@ -17,6 +17,9 @@ public class Article {
 	private int hitCount;
 	private int goodReactionPoint;
 	private int badReactionPoint;
+	private Integer previousArticleId;
+	private Integer nextArticleId;
+	
 	
 	private String extra__writerName;
 	private boolean extra__actorCanModify;

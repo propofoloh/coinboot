@@ -29,7 +29,7 @@
             <tr>
               <th style="font-weight: normal;">${article.id}</th>
               <td style="text-overflow:ellipsis; overflow:hidden; white-space:nowrap;">
-                <a class="btn-text-link block w-full truncate" href="../article/detail?id=${article.id}">
+                <a class="btn-text-link block w-full truncate" href="../article/detail?id=${article.id}&page=${page}">
                   ${article.title}
                 </a>
               </td>
@@ -41,7 +41,8 @@
         </tbody>
       </table>
 
-    <div class="text-center">
+    <div class="page-menu mt-3" style="text-align: center;">
+      <div class="btn-group justify-center">
         <c:set var="pageMenuArmLen" value="6" />
         <c:set var="startPage" value="${page - pageMenuArmLen >= 1 ? page - pageMenuArmLen : 1}" />
         <c:set var="endPage" value="${page + pageMenuArmLen <= pagesCount ? page + pageMenuArmLen : pagesCount}" />
@@ -51,22 +52,23 @@
         <c:set var="pageBaseUri" value="${pageBaseUri}&searchKeyword=${param.searchKeyword}" />
         
         <c:if test="${startPage > 1}">
-          <a class="btn btn-sm" href="${pageBaseUri}&page=1">1</a>
+          <a class="btn btn-primary btn-lg" href="${pageBaseUri}&page=1">1</a>
           <c:if test="${startPage > 2}">          
-            <a class="btn btn-sm btn-disabled">...</a>
+            <a class="btn btn-primary btn-lg disabled">...</a>
           </c:if>
         </c:if>
         <c:forEach begin="${startPage}" end="${endPage}" var="i">
-          <a class="btn btn-sm ${page == i ? 'btn-active' : ''}" href="${pageBaseUri}&page=${i}">${i}</a>          
+          <a class="btn btn-primary btn-lg ${page == i ? 'active' : ''}" href="${pageBaseUri}&page=${i}">${i}</a>          
         </c:forEach>
         <c:if test="${endPage < pagesCount}">
           <c:if test="${endPage < pagesCount - 1}">
-            <a class="btn btn-sm btn-disabled">...</a>
+            <a class="btn btn-primary btn-lg disabled">...</a>
           </c:if> 
-          <a class="btn btn-sm" href="${pageBaseUri}&page=${pagesCount}">${pagesCount}</a>
+          <a class="btn btn-primary btn-lg" href="${pageBaseUri}&page=${pagesCount}">${pagesCount}</a>
         </c:if>
+       </div>
       </div>
-    
+
     <div class="flex" style="margin-bottom: 20px; margin-top: 20px; margin-left: 10px;">
       <div class="flex-grow"></div>
       <form class="flex">
@@ -90,3 +92,21 @@
 <%@ include file="../common/foot.jspf"%>
 </div>
 </div>
+
+<script type="text/javascript">
+window.pagObj = $('#pagination').twbsPagination({
+    totalPages: [[${dataListPage.totalPages}]], // 전체 페이지
+    startPage: parseInt([[${dataListPage.number}]] + 1), // 시작(현재) 페이지
+    visiblePages: 10, // 최대로 보여줄 페이지
+    prev: "‹", // Previous Button Label
+    next: "›", // Next Button Label
+    first: '«', // First Button Label
+    last: '»', // Last Button Label
+    onPageClick: function (event, page) { // Page Click event
+        console.info("current page : " + page);
+    }
+}).on('page', function (event, page) {
+    searchDataList(page);
+});
+</script>
+

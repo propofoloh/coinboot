@@ -156,4 +156,23 @@ public class ArticleService {
 	public Article getArticle(int id) {
 		return articleRepository.getArticle(id);
 	}
+	
+	public Integer previousArticleId(Integer id) {
+		try{
+			
+		} catch (NullPointerException e) {
+			System.out.println("이전 게시물이 없어서 null");
+		}
+		return articleRepository.previousArticleId(id);
+	}
+
+	public Integer nextArticleId(Integer id) {
+		try{
+			
+		} catch (NullPointerException e) {
+			System.out.println("다 게시물이 없어서 null");
+		}
+		return articleRepository.nextArticleId(id);
+	}
+	
 }

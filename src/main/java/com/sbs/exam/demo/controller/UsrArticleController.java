@@ -1,12 +1,16 @@
 package com.sbs.exam.demo.controller;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
-import org.slf4j.LoggerFactory;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -14,24 +18,15 @@ import com.sbs.exam.demo.service.ArticleService;
 import com.sbs.exam.demo.service.BoardService;
 import com.sbs.exam.demo.service.ReactionPointService;
 import com.sbs.exam.demo.service.ReplyService;
+import com.sbs.exam.demo.sitemap.SitemapArticleRepository;
+import com.sbs.exam.demo.sitemap.Url;
+import com.sbs.exam.demo.sitemap.UrlSet;
 import com.sbs.exam.demo.util.Ut;
 import com.sbs.exam.demo.vo.Article;
 import com.sbs.exam.demo.vo.Board;
 import com.sbs.exam.demo.vo.Reply;
 import com.sbs.exam.demo.vo.ResultData;
 import com.sbs.exam.demo.vo.Rq;
-
-import java.io.IOException;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
-
-import org.jsoup.Connection;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
 @Controller
 public class UsrArticleController {
@@ -103,10 +98,17 @@ public class UsrArticleController {
 		int pagesCount = (int) Math.ceil((double) articlesCount / itemsCountInAPage);
 		List<Article> articles = articleService.getForPrintArticles(rq.getLoginedMemberId(), boardId,
 				searchKeywordTypeCode, searchKeyword, itemsCountInAPage, page);
+		
+		Integer previousArticleId = articleService.previousArticleId(id);
+		Integer nextArticleId = articleService.nextArticleId(id);
 
+		model.addAttribute("page", page);
 		model.addAttribute("pagesCount", pagesCount);
 		model.addAttribute("articlesCount", articlesCount);
 		model.addAttribute("articles", articles);
+		model.addAttribute("previousArticleId", previousArticleId);
+		model.addAttribute("nextArticleId", nextArticleId);
+		
 		
 		if (actorCanMakeReactionPointRd.getResultCode().equals("F-2")) {
 			int sumReactionPointByMemberId = (int) actorCanMakeReactionPointRd.getData1();
@@ -232,5 +234,42 @@ public class UsrArticleController {
 
 		return rq.jsReplace(Ut.f("%d번 글이 생성되었습니다.", id), replaceUri);
 	}
+	
+	//사이트맵 생성
+	@RequestMapping(value = "/sitemap.xml", method = RequestMethod.GET, produces = MediaType.APPLICATION_XML_VALUE) 
+    @ResponseBody 
+    public UrlSet siteMapReturn() { 
+
+		Url url = new Url();
+		
+		UrlSet urlSet = new UrlSet();
+		urlSet.setUrl(new ArrayList<>());
+		
+		urlSet.setXmlns("http://www.sitemaps.org/schemas/sitemap/0.9");
+		
+		for(int id: SitemapArticleRepository.selectId()) {
+			url = new Url();
+			url.setLoc("https://dongga.ga/usr/article/detail?id=" + id);
+			url.setLastmod(new Date());
+			urlSet.getUrl().add(url);
+		}
+
+		for(int id: SitemapArticleRepository.selectId()) {
+			url = new Url();
+			url.setLoc("https://dongga.ga/usr/article/m.detail?id=" + id);
+			url.setLastmod(new Date());
+			urlSet.getUrl().add(url);
+		}
+		
+/*		url.setLoc("https://dongga.ga/usr/article/detail");
+		url.setLastmod(new Date());
+		urlSet.getUrl().add(url);
+
+		url.setLoc("https://dongga.ga/usr/article/m.detail");
+		url.setLastmod(new Date());
+		urlSet.getUrl().add(url);
+*/		
+		return urlSet; 
+    } 
 
 }

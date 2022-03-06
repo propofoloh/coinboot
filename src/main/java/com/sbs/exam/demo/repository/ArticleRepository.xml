@@ -36,4 +36,22 @@
 		</set>
 		WHERE id = #{id}
 	</update>
+	
+	<select id="previousArticleId" resultType="Integer">
+			SELECT id 
+			FROM article 
+			WHERE 
+			<![CDATA[id < #{id} ]]>
+			ORDER BY id DESC LIMIT 1
+			
+	</select>
+
+	<select id="nextArticleId" resultType="Integer">
+			SELECT id 
+			FROM article 
+			WHERE 
+			<![CDATA[id > #{id} ]]>
+			ORDER BY id ASC LIMIT 1
+			
+	</select>
 </mapper>

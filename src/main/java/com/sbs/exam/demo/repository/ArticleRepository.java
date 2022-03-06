@@ -42,11 +42,6 @@ public interface ArticleRepository {
 				A.memberId,
 				A.boardId,
 				A.title,
-				A.body,
-				A.hitCount,
-				A.goodReactionPoint,
-				A.badReactionPoint,
-			M.nickname AS extra__writerName,
 				CASE WHEN A.regdate > date_format(sysdate(), '%Y-%m-%d') THEN date_format(A.regDate, '%H:%i')
 					ELSE date_format(A.regDate, '%m-%d')
 				END regDate
@@ -176,4 +171,8 @@ public interface ArticleRepository {
 			</script>
 			""")
 	public Article getArticle(int id);
+	
+	public Integer previousArticleId(Integer id);
+
+	public Integer nextArticleId(Integer id);
 }

@@ -103,10 +103,17 @@ public class MUsrArticleController {
 		int pagesCount = (int) Math.ceil((double) articlesCount / itemsCountInAPage);
 		List<Article> articles = articleService.getForPrintArticles(rq.getLoginedMemberId(), boardId,
 				searchKeywordTypeCode, searchKeyword, itemsCountInAPage, page);
+		
+		Integer previousArticleId = articleService.previousArticleId(id);
+		Integer nextArticleId = articleService.nextArticleId(id);
 
+		model.addAttribute("page", page);
 		model.addAttribute("pagesCount", pagesCount);
 		model.addAttribute("articlesCount", articlesCount);
 		model.addAttribute("articles", articles);
+		model.addAttribute("previousArticleId", previousArticleId);
+		model.addAttribute("nextArticleId", nextArticleId);
+		
 		if (actorCanMakeReactionPointRd.getResultCode().equals("F-2")) {
 			int sumReactionPointByMemberId = (int) actorCanMakeReactionPointRd.getData1();
 
