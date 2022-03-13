@@ -6,6 +6,7 @@
 
 <c:set var="pageTitle" value="게시물 작성" />
 <%@ include file="../common/head.jspf"%>
+<%@ include file="../common/bottom_menu.jsp"%>
 
 <div id='wrapper'>
 

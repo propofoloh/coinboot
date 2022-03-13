@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="../css.css">
 
 <%@ include file="../common/m.head.jspf"%>
+<%@ include file="../common/bottom_menu.jsp"%>
 
 <section class="mt-5" style="font-size: 25px;">
       <table class="table" style="table-layout: fixed;">
@@ -38,7 +39,7 @@
         </tbody>
       </table>
 
-    <div class="page-menu mt-3" style="text-align: center;">
+    <div class="page-menu mt-3" style="margin: 0 auto; width: 50%;">
       <div class="btn-group justify-center">
         <c:set var="pageMenuArmLen" value="6" />
         <c:set var="startPage" value="${page - pageMenuArmLen >= 1 ? page - pageMenuArmLen : 1}" />
@@ -49,19 +50,19 @@
         <c:set var="pageBaseUri" value="${pageBaseUri}&searchKeyword=${param.searchKeyword}" />
         
         <c:if test="${startPage > 1}">
-          <a class="btn btn-primary btn-lg" href="${pageBaseUri}&page=1">1</a>
+          <a class="btn btn-primary btn-sm" href="${pageBaseUri}&page=1">1</a>
           <c:if test="${startPage > 2}">          
-            <a class="btn btn-primary btn-lg disabled">...</a>
+            <a class="btn btn-primary btn-sm disabled">...</a>
           </c:if>
         </c:if>
         <c:forEach begin="${startPage}" end="${endPage}" var="i">
-          <a class="btn btn-primary btn-lg ${page == i ? 'active' : ''}" href="${pageBaseUri}&page=${i}">${i}</a>          
+          <a class="btn btn-primary btn-sm ${page == i ? 'active' : ''}" href="${pageBaseUri}&page=${i}">${i}</a>          
         </c:forEach>
         <c:if test="${endPage < pagesCount}">
           <c:if test="${endPage < pagesCount - 1}">
-            <a class="btn btn-primary btn-lg disabled">...</a>
+            <a class="btn btn-primary btn-sm disabled">...</a>
           </c:if> 
-          <a class="btn btn-primary btn-lg" href="${pageBaseUri}&page=${pagesCount}">${pagesCount}</a>
+          <a class="btn btn-primary btn-sm" href="${pageBaseUri}&page=${pagesCount}">${pagesCount}</a>
         </c:if>
        </div>
       </div>

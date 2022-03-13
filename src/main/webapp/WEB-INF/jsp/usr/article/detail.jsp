@@ -42,9 +42,12 @@ img {
   object-fit: cover;
 }
 video {
-  width: 100%;
-  height: auto%;
-  object-fit: cover;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    max-height: 100%;
+    max-width: 100%;
 }
 a:hover {
   color : red;
@@ -108,13 +111,16 @@ aria-expanded="false" aria-controls="collapseExample">
 </section>
 
 <div>
-	<c:if test="${nextArticleId != null}"> 
-	 <a href="../article/detail?id=${nextArticleId}&page=${page}">이전글</a>
-	</c:if>
-	
-	<c:if test="${previousArticleId != null}">
-	 <a href="../article/detail?id=${previousArticleId}&page=${page}">다음글</a>
-	</c:if> 
+
+	<div style="width: 100%; margin-top: 30px;">
+		<c:if test="${nextArticleId != null}"> 
+		 <a href="../article/detail?id=${nextArticleId}&page=${page}" style="margin-left: 25%;">이전글</a>
+		</c:if>
+		
+		<c:if test="${previousArticleId != null}">
+		 <a href="../article/detail?id=${previousArticleId}&page=${page}" style="margin-left: 40%;">다음글</a>
+		</c:if> 
+	</div>
  
 <!-- <a href="/usr/article/list?boardId=2">목록</a> -->
       <table class="table" style="table-layout: fixed;">

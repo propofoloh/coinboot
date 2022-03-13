@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../css.css">
 
 <script>
   const params = {};
@@ -44,6 +45,23 @@ video {
   width: 100%;
   height: auto%;
   object-fit: cover;
+}
+.bottom_menu { 
+	position: fixed; 
+	bottom: 0px; 
+	left: 0px; 
+	width: 100%; 
+	height: 50px; 
+	z-index:100; 
+	border-top: 1px solid black; 
+	background-color: white 
+}
+.bottom_menu > div { 
+	float: left; 
+	width: 20%; 
+	height: 100%; 
+	text-align: center; 
+	padding-top: 13px; 
 }
 </style>
 
@@ -102,15 +120,7 @@ aria-expanded="false" aria-controls="collapseExample">
 	</div>
 </section>
 
-<div>
-	<c:if test="${nextArticleId != null}"> 
-	 <a href="../article/detail?id=${nextArticleId}&page=${page}">이전글</a>
-	</c:if>
-	
-	<c:if test="${previousArticleId != null}">
-	 <a href="../article/detail?id=${previousArticleId}&page=${page}">다음글</a>
-	</c:if> 
-	
+<div>	
 <!-- <a href="/usr/article/list?boardId=2">목록</a> -->
       <table class="table" style="table-layout: fixed;">
         <colgroup>
@@ -153,23 +163,55 @@ aria-expanded="false" aria-controls="collapseExample">
         <c:set var="pageBaseUri" value="${pageBaseUri}&searchKeyword=${param.searchKeyword}" />
         
         <c:if test="${startPage > 1}">
-          <a class="btn btn-primary btn-lg" href="${pageBaseUri}&page=1">1</a>
+          <a class="btn btn-primary btn-sm" href="${pageBaseUri}&page=1">1</a>
           <c:if test="${startPage > 2}">          
-            <a class="btn btn-primary btn-lg disabled">...</a>
+            <a class="btn btn-primary btn-sm disabled">...</a>
           </c:if>
         </c:if>
         <c:forEach begin="${startPage}" end="${endPage}" var="i">
-          <a class="btn btn-primary btn-lg ${page == i ? 'active' : ''}" href="${pageBaseUri}&page=${i}">${i}</a>          
+          <a class="btn btn-primary btn-sm ${page == i ? 'active' : ''}" href="${pageBaseUri}&page=${i}">${i}</a>          
         </c:forEach>
         <c:if test="${endPage < pagesCount}">
           <c:if test="${endPage < pagesCount - 1}">
-            <a class="btn btn-primary btn-lg disabled">...</a>
+            <a class="btn btn-primary btn-sm disabled">...</a>
           </c:if> 
-          <a class="btn btn-primary btn-lg" href="${pageBaseUri}&page=${pagesCount}">${pagesCount}</a>
+          <a class="btn btn-primary btn-sm" href="${pageBaseUri}&page=${pagesCount}">${pagesCount}</a>
         </c:if>
        </div>
       </div>
 </div>
 
+<!-- 하단 버튼 -->
+	<div class="bottom_menu">
+		<div>
+			<img onclick="history.back()" src="/img/back.png"/>
+		</div>
+		
+		<div>
+			<c:if test="${nextArticleId != null}">
+				 <a href="../article/m.detail?id=${nextArticleId}&page=${page}" style="margin-left: 25%;">
+					<img src="/img/up.png"/>
+				 </a>
+			</c:if>
+		</div>
+		
+		<div>
+			<c:if test="${previousArticleId != null}">
+				 <a href="../article/m.detail?id=${previousArticleId}&page=${page}" style="margin-left: 40%;">
+					<img src="/img/down.png"/>					 
+				 </a>
+			</c:if>
+		</div>
+		
+		<div>
+			<a href="/usr/member/myPage">
+				<img src="/img/face.png"/>
+			</a>
+		</div>
+		
+		<div>
+			<img src="/img/setting.png" />
+		</div>
+	</div>
 <%@ include file="../common/foot.jspf"%>
 </div>

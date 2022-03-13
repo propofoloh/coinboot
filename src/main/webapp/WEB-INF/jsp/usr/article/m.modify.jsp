@@ -4,6 +4,7 @@
 
 <c:set var="pageTitle" value="게시물 수정" />
 <%@ include file="../common/head.jspf"%>
+<%@ include file="../common/bottom_menu.jsp"%>
 
 <script>
   let ArticleModify__submitDone = false;
