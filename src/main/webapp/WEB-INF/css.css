@@ -54,6 +54,7 @@ footer p span {
 	white-space:nowrap; 
 }
 
+/* 하단메뉴 */
 .bottom_menu { 
 	position: fixed; 
 	bottom: 0px; 

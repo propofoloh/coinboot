@@ -5,6 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <link rel="stylesheet" href="../css.css">
 
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5Q5YC9JJPE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-5Q5YC9JJPE');
+</script>
+
+<!-- 애드센스 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1107226096880396"
+     crossorigin="anonymous"></script>
+     
+</head>
+
 <div class="container">
 <div id='wrapper'>
 
@@ -15,12 +32,16 @@
         <colgroup>
           <col width="20%" />
           <col width="75%" />
+          <col width="15%" />
+          <col width="25%" />
           <col width="25%" />
         </colgroup>
         <thead>
           <tr style="text-align: center; font-size: 0.8em">
             <th scope="col">번호</th>
             <th scope="col">제목</th>
+            <th scope="col">조회수</th>
+            <th scope="col">작성자</th>
             <th scope="col">작성일</th>
           </tr>
         </thead>
@@ -32,6 +53,12 @@
                 <a class="btn-text-link block w-full truncate" href="../article/detail?id=${article.id}&page=${page}">
                   ${article.title}
                 </a>
+              </td>
+              <td style="font-size: 0.8em;">
+              ${article.extra__writerName}
+              </td>
+              <td style="font-size: 0.8em;">
+              ${article.hitCount}
               </td>
               <td style="font-size: 0.8em;">
               ${article.forPrintType1RegDate}

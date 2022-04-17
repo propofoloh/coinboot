@@ -29,7 +29,7 @@ public class linkPaser {
 		ResultSet rs = null;
 		PreparedStatement pstmt = null;
     	
-        Document doc = Jsoup.connect("https://www.jjang0u.com/board/list/fun").get();//html 가져오기
+        Document doc = Jsoup.connect("https://www.jjang0u.com/board/list/fun/2").get();//html 가져오기
     	//System.out.println(doc.toString()); //전체 html 출력
 
 	    Elements els = doc.select(".title a"); // class dv_input인 a 태그 전부 찾음

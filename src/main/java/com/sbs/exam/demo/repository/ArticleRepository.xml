@@ -54,4 +54,12 @@
 			ORDER BY id ASC LIMIT 1
 			
 	</select>
+
+	<select id="blindMember" resultType="Int">
+			SELECT id 
+			FROM article 
+			WHERE
+			memberId = '2'
+			
+	</select>
 </mapper>

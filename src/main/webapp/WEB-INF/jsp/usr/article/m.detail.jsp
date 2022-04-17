@@ -82,6 +82,7 @@ video {
     	<hr style="border: solid 1px gray;">
 <br>
 		<div style="float: right;">
+		
 	      <c:if test="${article.extra__actorCanModify}">
 	        <a class="btn btn-link" href="../article/modify?id=${article.id}">게시물 수정</a>
 	      </c:if>
@@ -89,6 +90,19 @@ video {
 	        <a class="btn btn-link" onclick="if ( confirm('정말 삭제하시겠습니까?') == false ) return false;"
 	          href="../article/doDelete?id=${article.id}">게시물 삭제</a>
 	      </c:if>
+	      <c:if test="${article.extra__actorCanDelete or rq.loginedMember.authLevel == '7'}">
+	        <a class="btn btn-link" onclick="if ( confirm('정말 삭제하시겠습니까?') == false ) return false;"
+	          href="../article/doDelete?id=${article.id}">게시물 삭제[관리자]</a>
+	      </c:if>
+      	
+	      <c:choose>
+		      <c:when test="${rq.isLogined()}">
+			      <%@ include file="../common/declaration.jsp"%>
+		      </c:when>
+		      <c:when test="${!rq.isLogined()}">
+			      <a class="btn btn-link" id="confirmStart" style="cursor:pointer">게시물 신고</a>
+		      </c:when>
+	      </c:choose>
 		</div>
 
 		<div style="margin-top: 50px; font-size: 15px;">
@@ -215,3 +229,26 @@ aria-expanded="false" aria-controls="collapseExample">
 	</div>
 <%@ include file="../common/foot.jspf"%>
 </div>
+
+<script type="text/javascript">
+$().ready(function () {
+	  $("#confirmStart").click(function () {
+		    Swal.fire({
+		      title: '게시물 신고를 위해서 로그인이 필요해요.',
+		      text: "로그인을 진행 할까요?",
+		      icon: 'warning',
+		      showCancelButton: true,
+		      confirmButtonColor: '#3085d6',
+		      cancelButtonColor: '#d33',
+		      confirmButtonText: '로그인',
+		      cancelButtonText: '취소',
+		      reverseButtons: true, // 버튼 순서 거꾸로
+		      
+		    }).then((result) => {
+		      if (result.isConfirmed) {
+		         window.location.href = 'https://dongga.ga/usr/member/login';
+		      }
+		    })
+		  });
+});
+</script>

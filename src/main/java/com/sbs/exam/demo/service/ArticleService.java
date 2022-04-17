@@ -175,4 +175,8 @@ public class ArticleService {
 		return articleRepository.nextArticleId(id);
 	}
 	
+	public void blindMember(int memberId) {
+		articleRepository.blindMember(memberId);
+	}
+	
 }

@@ -271,5 +271,23 @@ public class UsrArticleController {
 */		
 		return urlSet; 
     } 
+	
+	@RequestMapping("/usr/article/doMemberBlind")
+	@ResponseBody
+	public String doMemberBlind(int memberId) {
+		Article article = articleService.getForPrintArticle(rq.getLoginedMemberId(), memberId);
+
+		if (article == null) {
+			rq.jsHistoryBack(Ut.f("%d번 게시물이 존재하지 않습니다.", memberId));
+		}
+
+		if (article.getMemberId() != rq.getLoginedMemberId()) {
+			return rq.jsHistoryBack("권한이 없습니다.");
+		}
+
+		articleService.blindMember(memberId);
+
+		return rq.jsReplace(Ut.f("작성자를 차단하였습니다.", memberId), "../article/list");
+	}
 
 }

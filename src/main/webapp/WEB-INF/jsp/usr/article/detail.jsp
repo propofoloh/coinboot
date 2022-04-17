@@ -2,7 +2,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<link rel="stylesheet" href="../css.css">
 
+<!-- 애드센스 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1107226096880396"
+     crossorigin="anonymous"></script>
+     
 <script>
   const params = {};
   params.id = parseInt('${param.id}');
@@ -59,7 +64,7 @@ a:active {
 
 <%@ include file="../common/head.jspf"%>
 
-  <div style="width:90%; margin : 0 auto; text-align:center;">
+  <div style="width:90%; margin : 0 auto; text-align:center; z-index: 1; position:relative;">
     <div class="table-box-type-1" style="font-size: 25px;">
     	<div>
     		${article.title}
@@ -71,7 +76,11 @@ a:active {
     	</div>
     	<hr style="border: solid 1px gray;">
 <br>
-		<div style="float: right;">
+		<div style="text-align: right;">
+		<c:if test="${rq.isLogined()}">
+	        <a class="btn btn-link" onclick="if ( confirm('작성자를 차단 하시겠습니까?') == false ) return false;"
+	          href="../article/doMemberBlind?memberId=${article.memberId}">작성자 차단</a>
+		</c:if>
 	      <c:if test="${article.extra__actorCanModify}">
 	        <a class="btn btn-link" href="../article/modify?id=${article.id}">게시물 수정</a>
 	      </c:if>
@@ -79,9 +88,22 @@ a:active {
 	        <a class="btn btn-link" onclick="if ( confirm('정말 삭제하시겠습니까?') == false ) return false;"
 	          href="../article/doDelete?id=${article.id}">게시물 삭제</a>
 	      </c:if>
+    	  <c:if test="${article.extra__actorCanDelete or rq.loginedMember.authLevel == '7'}">
+	        <a class="btn btn-link" onclick="if ( confirm('불량 게시물을 삭제하시겠습니까?') == false ) return false;"
+	          href="../article/doDelete?id=${article.id}">불량 게시물 삭제 및 차단[관리자]</a>
+	      </c:if>
+	      
+	      <c:choose>
+		      <c:when test="${rq.isLogined()}">
+			      <%@ include file="../common/declaration.jsp"%>
+		      </c:when>
+		      <c:when test="${!rq.isLogined()}">
+			      <a class="btn btn-link" id="confirmStart" style="cursor:pointer">게시물 신고</a>
+		      </c:when>
+	      </c:choose>
 		</div>
 
-		<div style="margin-top: 50px; font-size: 15px;">
+		<div id="contents" name="contents" style="margin-top: 50px; font-size: 15px;">
               		 ${article.forPrintBody}
 		</div>
 <br>
@@ -140,7 +162,7 @@ aria-expanded="false" aria-controls="collapseExample">
           <c:forEach var="article" items="${articles}">
             <tr>
               <th style="font-weight: normal;">${article.id}</th>
-              <td style="text-overflow:ellipsis; overflow:hidden; white-space:nowrap;">
+              <td style="text-overflow:ellipsis; overflow:hidden; white-space:nowrap; color: blue;">
                <!--  <a class="btn-text-link block w-full truncate" href="../article/detail?id=${article.id}&page=${page}"> -->
                <a href="../article/detail?id=${article.id}&page=${page}">
                   ${article.title}
@@ -185,3 +207,26 @@ aria-expanded="false" aria-controls="collapseExample">
 
 
 <%@ include file="../common/foot.jspf"%>
+
+<script type="text/javascript">
+$().ready(function () {
+	  $("#confirmStart").click(function () {
+		    Swal.fire({
+		      title: '게시물 신고를 위해서 로그인이 필요해요.',
+		      text: "로그인을 진행 할까요?",
+		      icon: 'warning',
+		      showCancelButton: true,
+		      confirmButtonColor: '#3085d6',
+		      cancelButtonColor: '#d33',
+		      confirmButtonText: '로그인',
+		      cancelButtonText: '취소',
+		      reverseButtons: true, // 버튼 순서 거꾸로
+		      
+		    }).then((result) => {
+		      if (result.isConfirmed) {
+		         window.location.href = 'https://dongga.ga/usr/member/login';
+		      }
+		    })
+		  });
+});
+</script>

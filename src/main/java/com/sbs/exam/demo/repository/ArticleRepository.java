@@ -40,6 +40,8 @@ public interface ArticleRepository {
 				A.id,
 				A.updateDate,
 				A.memberId,
+				M.nickname AS extra__writerName,
+				A.hitCount,
 				A.boardId,
 				A.title,
 				CASE WHEN A.regdate > date_format(sysdate(), '%Y-%m-%d') THEN date_format(A.regDate, '%H:%i')
@@ -175,4 +177,6 @@ public interface ArticleRepository {
 	public Integer previousArticleId(Integer id);
 
 	public Integer nextArticleId(Integer id);
+
+	public int blindMember(int memberId);
 }
