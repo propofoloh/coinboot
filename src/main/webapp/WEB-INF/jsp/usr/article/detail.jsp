@@ -81,6 +81,10 @@ a:active {
 	        <a class="btn btn-link" onclick="if ( confirm('작성자를 차단 하시겠습니까?') == false ) return false;"
 	          href="../article/doMemberBlind?memberId=${article.memberId}">작성자 차단</a>
 		</c:if>
+    	  <c:if test="${rq.isLogined()}">
+	        <a class="btn btn-link" onclick="if ( confirm('불량 사용자를 신고를 하시겠습니까?') == false ) return false;"
+	          href="../article/doMemberBlind?memberId=${article.memberId}">불량 사용자 신고</a>
+	      </c:if>
 	      <c:if test="${article.extra__actorCanModify}">
 	        <a class="btn btn-link" href="../article/modify?id=${article.id}">게시물 수정</a>
 	      </c:if>
