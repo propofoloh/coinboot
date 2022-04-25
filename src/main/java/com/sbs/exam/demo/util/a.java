@@ -1,4 +1,4 @@
-package a;
+package com.sbs.exam.demo.util;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
