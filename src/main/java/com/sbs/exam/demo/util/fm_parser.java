@@ -11,15 +11,15 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-public class a {
+public class fm_parser {
 
 
     public static void main(final String[] args) throws IOException{
     	
     	java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
     	
-		String db = "jdbc:mysql://127.0.0.1:3306/coindb";
-		String user = "coinuser";
+		String db = "jdbc:mysql://ls-a8f0ab1c2fff58b463fa2f5db70ef70f92ff71ea.cur6vfnjyk64.ap-northeast-2.rds.amazonaws.com:3306/sb_c_2021_2nd_t";
+		String user = "sb";
 		String password = "1234";
 		
 		Connection conn = null;
@@ -27,10 +27,10 @@ public class a {
 		ResultSet rs = null;
 		PreparedStatement pstmt = null;
     	
-        Document doc = Jsoup.connect("https://www.fmkorea.com/index.php?mid=best&page=1").get();//html 가져오기
+        Document doc = Jsoup.connect("https://www.fmkorea.com/index.php?mid=best&page=2").get();//html 가져오기
     	//System.out.println(doc.toString()); //전체 html 출력
 
-	    Elements els = doc.select(".fm_best_widget a"); // class dv_input인 a 태그 전부 찾음
+	    Elements els = doc.select(".title a"); // class dv_input인 a 태그 전부 찾음
 	    	//Element els = doc.select(".dv_input a").get(0); //get(i)를통해 몇번째 요소 가져올수 있음
 	
 	try {
@@ -41,20 +41,23 @@ public class a {
 		conn = DriverManager.getConnection(db, user, password);
 		System.out.println("연결 성공\n*******************************************************************************");
 		
-	    for(Element e : els){ 
-	    	//리스트에서 링크 파싱
-	        System.out.println("https://www.fmkorea.com" + e.getElementsByAttribute("href").attr("href"));  //a 태그의 href 속성값 전부 print
-	        //해당 링크의 제목 파싱
-	        String title = e.getElementsByAttribute(".title").attr("href");
-	        System.out.println(e.getElementsByAttribute(".title").attr("href"));  //a 태그의 href 속성값 전부 print
-	
-	        //파싱한 링크의 컨텐츠를 파싱
+	    for(Element e : els){
 	        String URL = "https://www.fmkorea.com" + e.getElementsByAttribute("href").attr("href");
 	        org.jsoup.Connection conn2 = Jsoup.connect(URL);
 	        Document document = conn2.get();
-			Element ele2 = document.select("section#document_4557368855_3234957689 xe_content").get(0);
-			String contents = ele2.html();	
+	        
+	    	//리스트에서 링크 파싱
+	        System.out.println("https://www.fmkorea.com" + e.getElementsByAttribute("href").attr("href"));  //a 태그의 href 속성값 전부 print
+	        
+	        //해당 링크의 제목 파싱
+			Element ele2 = document.select("span.np_18px_span").get(0);
+			String title = ele2.html();	
 			System.out.println(ele2.html());
+	        
+	        //파싱한 링크의 컨텐츠를 파싱
+			Element ele3 = document.select("article").get(0);
+			String contents = ele3.html();	
+			System.out.println(ele3.html());
 			
 			//DB에 데이터를 넣음
 			String sql = "INSERT INTO article (id, regDate, updateDate, memberId, boardId, title, body, hitCount, goodReactionPoint, badReactionPoint) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
