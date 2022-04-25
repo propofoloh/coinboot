@@ -1,7 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, maximum-scale=1.0, user-scalable=no">
+
+<!-- 카톡, 네이버 -->
+<meta property="og:title" content="${article.title}" /> <!--웹페이지 title -->
+<meta property="og:url" content="dongga.ga"> <!--웹페이지 URL -->
+<meta property="og:type" content="website" />
+<meta property="og:image" content="" /> 
+<meta property="og:description" content="재미있는 각종 유머글 모음 사이트, 유머 사이트 추천, 심심할 때,유머 모음, 재밌는 글, 유머 게시판" /> 
+
 <link rel="stylesheet" href="../css.css">
+
+<!-- 카톡 공유 -->
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 
 <script>
   const params = {};
@@ -66,6 +77,7 @@ video {
 </style>
 
 <%@ include file="../common/m.head.jspf"%>
+<%@ include file="../common/noticPopup.jsp"%>
 
 <div class="">
 
@@ -121,6 +133,15 @@ video {
 <br>
 
 		<div id="contents">
+			<a id="btnKakao" class="link-icon kakao" href="javascript:shareKakao();">
+				<img src="/img/sns_kakao.png"/>
+			</a>
+			<a id="btnFacebook" class="link-icon facebook" href="javascript:shareFacebook();">
+				<img src="/img/sns_facebook.png"/>
+			</a>
+			<a id="btnTwitter" class="link-icon twitter" href="javascript:shareTwitter();">
+				<img src="/img/sns_twitter.png"/>
+			</a>
 			<%@ include file="../good/good.jsp"%>
 		</div>
     </div>
@@ -133,7 +154,7 @@ video {
 <section style="text-align: center;">
 <button class="btn btn-primary" style="width: 90%; margin-bottom: 10px;" type="button" data-toggle="collapse" data-target="#collapseExample" 
 aria-expanded="false" aria-controls="collapseExample">
-  댓글 보기
+  댓글 보기(${replies.size()})
 </button>
 	<div class="collapse" id="collapseExample" style="margin-bottom: 10px;">
 	  <div class="well">
@@ -259,4 +280,46 @@ $().ready(function () {
 		    })
 		  });
 });
+</script>
+
+<script type="text/javascript">
+function shareTwitter() {
+    var sendText = "동까 유머 - 실시간 유머글";  // 전달할 텍스트
+    var sendUrl = "https://dongga.ga/usr/article/m.detail?id=" + ${article.id} ; // 전달할 URL
+    window.open("https://twitter.com/intent/tweet?text=" + sendText + "&url=" + sendUrl);
+}
+</script>
+
+<script type="text/javascript">
+function shareFacebook() {
+    var sendUrl = "https://dongga.ga/usr/article/m.detail?id=" + ${article.id} ; // 전달할 URL
+    window.open("http://www.facebook.com/sharer/sharer.php?u=" + sendUrl);
+}
+</script>
+
+<script type="text/javascript">
+function shareKakao() {
+ 
+  // 사용할 앱의 JavaScript 키 설정
+  Kakao.init('c19bc6c1c3acdde0beb31291a25965e4');
+ 
+  // 카카오링크 버튼 생성
+  Kakao.Link.createDefaultButton({
+    container: '#btnKakao', // 카카오공유버튼ID
+    objectType: 'feed',
+    content: {
+      //title: "동까 유머 - 실시간 유머글", // 보여질 제목
+      //description: "재미있는 각종 유머글 모음 사이트, 유머 사이트 추천, 심심할 때,유머 모음, 재밌는 글, 유머 게시판", // 보여질 설명
+      //imageUrl: "https://dongga.ga/usr/article/detail?id=" + ${article.id}, // 콘텐츠 URL
+    		  
+      title: $('meta[property="og:title"]').attr( 'content' ),
+      description: $('meta[property="og:description"]').attr( 'content' ),
+      imageUrl: $( 'meta[property="og:image"]' ).attr( 'content' ),
+      link: {
+         mobileWebUrl: "https://dongga.ga/usr/article/m.detail?id=" + ${article.id},
+         webUrl: "https://dongga.ga/usr/article/detail?id=" + ${article.id}
+      }
+    }
+  });
+}
 </script>

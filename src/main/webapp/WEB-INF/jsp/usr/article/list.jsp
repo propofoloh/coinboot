@@ -26,6 +26,7 @@
 <div id='wrapper'>
 
 <%@ include file="../common/head.jspf"%>
+<%@ include file="../common/noticPopup.jsp"%>
 
 <section class="mt-5" style="font-size: 25px;">
       <table class="table" style="table-layout: fixed;">
@@ -108,7 +109,7 @@
           <option value="title,body">제목,내용</option>
         </select>
         
-        <input name="searchKeyword" type="text" class="ml-2 w-72 input input-bordered" style="margin-top:10px;"
+        <input name="searchKeyword" type="text" class="ml-2 w-72 input input-bordered" style="margin-top:10px;  width:60%;"
          placeholder="검색어" maxlength="20" value="${param.searchKeyword}" />
         
         <button type="submit" class="ml-2 btn btn-primary">검색</button>

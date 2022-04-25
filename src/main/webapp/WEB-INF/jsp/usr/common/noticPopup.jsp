@@ -6,84 +6,84 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 
-</head>
+<script>
+    //쿠키설정    
+    function setCookie( name, value, expiredays ) {
+    var todayDate = new Date();
+    todayDate.setDate( todayDate.getDate() + expiredays );
+    document.cookie = name + '=' + escape( value ) + '; path=/; expires=' + todayDate.toGMTString() + ';'
+    }
+
+    //쿠키 불러오기
+    function getCookie(name) 
+    { 
+        var obj = name + "="; 
+        var x = 0; 
+        while ( x <= document.cookie.length ) 
+        { 
+            var y = (x+obj.length); 
+            if ( document.cookie.substring( x, y ) == obj ) 
+            { 
+                if ((endOfCookie=document.cookie.indexOf( ";", y )) == -1 ) 
+                    endOfCookie = document.cookie.length;
+                return unescape( document.cookie.substring( y, endOfCookie ) ); 
+            } 
+            x = document.cookie.indexOf( " ", x ) + 1; 
+            
+            if ( x == 0 ) break; 
+        } 
+        return ""; 
+    }
+
+    //닫기 버튼 클릭시
+    function closeWin(key)
+    {
+        if($("#todaycloseyn").prop("checked"))
+        {
+            setCookie('divpop'+key, 'Y' , 1 );
+        }
+        $("#divpop"+key+"").hide();
+    }
+  
+    $(function(){    
+        if(getCookie("divpop1") !="Y"){
+            $("#divpop1").show();
+        }
+    });
+</script>
 
 <style>
-<style>
-font-family: SF Pro KR, SF Pro Display, SF Pro Icons, AOS Icons, Apple Gothic, HY Gulim, MalgunGothic, HY Dotum, Lexi Gulim, Helvetica Neue, Helvetica, Arial, sans-serif;
-.layerPopup img{
-margin-bottom : 20px;}
-.layerPopup:before {display:block; content:""; position:fixed; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,.5); z-index:9000}
-.layerPopup .layerBox {    z-index:10000;   
-position:fixed; left:85%; top:48%; transform:translate(-50%, -50%); padding:30px; background:#fff; border-radius:6px; }
-.layerPopup .layerBox .title {margin-bottom:10px; padding-bottom:10px; font-weight:600; border-bottom:1px solid #d9d9d9;}
-.layerPopup .layerBox .btnTodayHide {
-font-size:14px; font-weight:600; color:black; 
-float: left;text-decoration:none;width: 150px; 
-height : 30px;line-height:30px;border:black solid 1px; text-align : center;text-decoration:none;
-}
-.layerPopup div{
-	display : inline;
-}
-.layerPopup form{
-	margin-top : 5px;
-	font-size:16px; font-weight:600;
-	weight: 100%;
-	height : 30px;
-	line-height:30px
-}
-.layerPopup #close {
-font-size:16px; font-weight:600; width: 40px; height : 30px;color:black; float: right; line-height:30px; text-align : center;text-decoration:underline;
-}
-.layerPopup a{
-	text-decoration : none;
-	color : black;width: 50px;height : 40px;
-}
-
+  .divpop {
+      position: absolute; z-index:999; top:50px; left:10%;
+      width:350px; height:500px; border:1px solid black;background-color:yellow;display:none;
+  }
+  .title_area {font-weight:bold;text-align:center;width:100%; color:red; font-size:2em}
+  .button_area {position:absolute;bottom:0;left:10px;} 
 </style>
-
-<script language="JavaScript">
-//head 태그 안에 스크립트 선언
-        function setCookie( name, value, expiredays ) {
-            var todayDate = new Date();
-            todayDate.setDate( todayDate.getDate() + expiredays ); 
-            document.cookie = name + "=" + escape( value ) + "; path=/; expires=" + todayDate.toGMTString() + ";"
-        }
-        function closePop() {
-            if ( document.pop_form.chkbox.checked ){
-                setCookie( "maindiv", "done" , 1 );
-            }
-            document.all['layer_popup'].style.visibility = "hidden";
-        }
-</script>
- <script language="Javascript">
-    cookiedata = document.cookie;   
-    if ( cookiedata.indexOf("maindiv=done") < 0 ){     
-        document.all['layer_popup'].style.visibility = "visible";
-    }
-    else {
-        document.all['layer_popup'].style.visibility = "hidden";
-    }
-</script>
 </head>
 
 <body>
-<div class="layerPopup" id="layer_popup" style="visibility: visible;">
-    <div class="layerBox">
-        <h4 class="title">FineApple 공지사항</h4>
-        <div class="cont">
-            <p>
-<img src="../images/popup.jpg" width=350 height=500 usemap="#popup" alt="event page">
-            </p>
-        </div>
-          <form name="pop_form">
-        <div id="check" ><input type="checkbox" name="chkbox" value="checkbox" id='chkbox' >
-        <label for="chkbox">&nbsp&nbsp오늘 하루동안 보지 않기</label></div>
-		<div id="close" ><a href="javascript:closePop();">닫기</a></div>    
-		</form>
-	</div>
-</div>
-
+  <form name="notice_form">
+      <div id="divpop1" class="divpop">
+      	<a href="https://play.google.com/store/apps/details?id=com.a.test2" target="_blank">
+          <div class="title_area">
+          	동까 유머 어플 출시!!
+          </div>
+        
+          <div class="contents" style="width:100%; hight:100%; text-align : center;">
+          	<img src="/img/appicon(popup).png" style="width:90%; hight:80%; margin-top : 5px;"/>
+          	<B>Google Play 다운로드</B>
+          </div>
+         
+           <div class="button_area">
+               <input type='checkbox' name='chkbox' id='todaycloseyn' value='Y'>
+               <label for="todaycloseyn">&nbsp&nbsp오늘 하루동안 보지 않기</label>
+               <a href='#' onclick="javascript:closeWin(1);"><B>[닫기]</B></a>
+           </div>
+        </a>
+      </div>
+  </form>
 </body>
 </html>
