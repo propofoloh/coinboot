@@ -18,9 +18,6 @@ import com.sbs.exam.demo.service.ArticleService;
 import com.sbs.exam.demo.service.BoardService;
 import com.sbs.exam.demo.service.ReactionPointService;
 import com.sbs.exam.demo.service.ReplyService;
-import com.sbs.exam.demo.sitemap.SitemapArticleRepository;
-import com.sbs.exam.demo.sitemap.Url;
-import com.sbs.exam.demo.sitemap.UrlSet;
 import com.sbs.exam.demo.util.Ut;
 import com.sbs.exam.demo.vo.Article;
 import com.sbs.exam.demo.vo.Board;
@@ -234,43 +231,6 @@ public class UsrArticleController {
 
 		return rq.jsReplace(Ut.f("%d번 글이 생성되었습니다.", id), replaceUri);
 	}
-	
-	//사이트맵 생성
-	@RequestMapping(value = "/sitemap.xml", method = RequestMethod.GET, produces = MediaType.APPLICATION_XML_VALUE) 
-    @ResponseBody 
-    public UrlSet siteMapReturn() { 
-
-		Url url = new Url();
-		
-		UrlSet urlSet = new UrlSet();
-		urlSet.setUrl(new ArrayList<>());
-		
-		urlSet.setXmlns("http://www.sitemaps.org/schemas/sitemap/0.9");
-		
-		for(int id: SitemapArticleRepository.selectId()) {
-			url = new Url();
-			url.setLoc("https://dongga.ga/usr/article/detail?id=" + id);
-			url.setLastmod(new Date());
-			urlSet.getUrl().add(url);
-		}
-
-		for(int id: SitemapArticleRepository.selectId()) {
-			url = new Url();
-			url.setLoc("https://dongga.ga/usr/article/m.detail?id=" + id);
-			url.setLastmod(new Date());
-			urlSet.getUrl().add(url);
-		}
-		
-/*		url.setLoc("https://dongga.ga/usr/article/detail");
-		url.setLastmod(new Date());
-		urlSet.getUrl().add(url);
-
-		url.setLoc("https://dongga.ga/usr/article/m.detail");
-		url.setLastmod(new Date());
-		urlSet.getUrl().add(url);
-*/		
-		return urlSet; 
-    } 
 	
 	@RequestMapping("/usr/article/doMemberBlind")
 	@ResponseBody

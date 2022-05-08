@@ -27,7 +27,7 @@ public class fm_parser {
 		ResultSet rs = null;
 		PreparedStatement pstmt = null;
     	
-        Document doc = Jsoup.connect("https://www.fmkorea.com/index.php?mid=best&page=2").get();//html 가져오기
+        Document doc = Jsoup.connect("https://www.fmkorea.com/index.php?mid=best&page=1").get();//html 가져오기
     	//System.out.println(doc.toString()); //전체 html 출력
 
 	    Elements els = doc.select(".title a"); // class dv_input인 a 태그 전부 찾음

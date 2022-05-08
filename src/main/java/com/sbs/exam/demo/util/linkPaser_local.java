@@ -14,13 +14,13 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 
-public class linkPaser {
+public class linkPaser_local {
 	
     public static void main(final String[] args) throws IOException{
     	
     	java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
     	
-		String db = "jdbc:mysql://ls-a8f0ab1c2fff58b463fa2f5db70ef70f92ff71ea.cur6vfnjyk64.ap-northeast-2.rds.amazonaws.com:3306/sb_c_2021_2nd_t";
+		String db = "jdbc:mysql://127.0.0.1:3306/sb_c_2021_2nd_t";
 		String user = "sb";
 		String password = "1234";
 		

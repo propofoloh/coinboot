@@ -6,7 +6,7 @@
 <meta property="og:title" content="${article.title}" /> <!--웹페이지 title -->
 <meta property="og:url" content="dongga.ga"> <!--웹페이지 URL -->
 <meta property="og:type" content="website" />
-<meta property="og:image" content="" /> 
+<meta property="og:image" content="/img/appicon(popup).png" /> 
 <meta property="og:description" content="재미있는 각종 유머글 모음 사이트, 유머 사이트 추천, 심심할 때,유머 모음, 재밌는 글, 유머 게시판" /> 
 
 <link rel="stylesheet" href="../css.css">

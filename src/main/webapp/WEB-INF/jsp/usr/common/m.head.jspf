@@ -24,6 +24,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, maximum-scale=1.0, user-scalable=no">
 <title>동까 유머</title>
+<meta name="keywords" content="동까 유머">
+<meta name="description" content="재미있는 각종 유머글 모음 사이트, 유머 사이트 추천, 심심할 때,유머 모음, 재밌는 글, 유머 게시판">
+<meta name="robots" content="all">
+
 <!-- 네이버 웹마스터 -->
 <meta name="naver-site-verification" content="ceaa8b0525f9fa9a06be473385a769bbe73ec459" />
 <!-- 구글 서치콘솔 -->
@@ -96,6 +100,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	        </div>
 	      </li>
 	      </c:if>
+	      
+	      <li class="nav-item dropdown">
+	        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+	          모바일 버전
+	        </a>
+	        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+	          <a class="nav-link" href="/usr/article/list?boardId=2">PC 버전</a>
+	        </div>
+	      </li>
 	    </ul>
 	  </div>
 	</nav>

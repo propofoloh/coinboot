@@ -5,13 +5,17 @@
 
 <div id='wrapper'>
 
-<c:set var="pageTitle" value="메인" />
+<c:set var="pageTitle" value="" />
 <%@ include file="../common/head.jspf"%>
 
 <section class="mt-5">
   <div class="container mx-auto px-3" style="font-size:20px;">
-   <a href="/usr/home/m.main">모바일로 사용</a>
+   <a href="/usr/article/list?boardId=2">PC 버전 - 유머 게시판 이동하기</a>
+   <br>
+   <br>
+   <a href="/usr/article/m.list?boardId=2">모바일 버전 - 유머 게시판 이동하기</a>
   </div>
+  <img src="/img/appicon(popup).png" style="width:50%; height:50%; margin-top: 30px; margin-left:20%;"/>
 </section>
 
 <div style="margin-top:30%;">
