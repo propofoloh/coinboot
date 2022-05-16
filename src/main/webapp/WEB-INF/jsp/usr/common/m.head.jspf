@@ -72,6 +72,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	          <a class="nav-link" href="/usr/member/login">로그인</a>
 	        </li>
 	      </c:if>
+	      <c:if test="${!rq.isLogined()}">
+	        <li class="nav-item">
+	          <a class="nav-link" href="/usr/member/naverLogin">네이버 로그인</a>
+	        </li>
+	      </c:if>
 	      
 	      <c:if test="${!rq.isLogined()}">
 	        <li>
@@ -119,7 +124,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <h1>${pageTitle}</h1>
     </div>
   </section>
-  
+
 <!-- 네이버 애널리틱스 -->
 <script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
 <script type="text/javascript">

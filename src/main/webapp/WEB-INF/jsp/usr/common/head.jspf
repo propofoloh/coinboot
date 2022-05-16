@@ -70,33 +70,39 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	      <li class="nav-item">
 	      </c:if>
 	      
-	      <c:if test="${!rq.isLogined()}">
+	      <c:if test="${!rq.isLogined() or sessionId == null}">
 	        <li class="nav-item">
 	          <a class="nav-link" href="/usr/member/login">로그인</a>
 	        </li>
-	      </c:if>
-	      <c:if test="${!rq.isLogined()}">
 	        <li class="nav-item">
 	          <a class="nav-link" href="/usr/member/naverLogin">네이버 로그인</a>
 	        </li>
 	      </c:if>
 	      
-	      <c:if test="${!rq.isLogined()}">
+	      <c:if test="${!rq.isLogined() or sessionId == null}">
 	        <li>
 	          <a class="nav-link" href="/usr/member/join">회원가입</a>
 	        </li>
 	      </c:if>
 	      
-	      <c:if test="${rq.isLogined()}">
+	    <c:choose>
+	      <c:when test="${rq.isLogined()}">
 	        <li class="nav-item">
 	          <a class="nav-link" href="/usr/member/myPage">${rq.loginedMember.nickname}'s Profile</a>
 	        </li>
 	        <li class="nav-item">
 	          <a class="nav-link" href="/usr/member/doLogout">로그아웃</a>
 	        </li>
-	      </c:if>
-	      
-	      <c:if test="${rq.isLogined()}">
+	      </c:when>
+	      <c:when test="${sessionId != null}">
+	      	<li class="nav-item">
+	          <a class="nav-link" href="/naverLogout">로그아웃</a>
+	        </li>
+	      </c:when>
+	    </c:choose>
+	    
+	    <c:choose>
+	      <c:when test="${rq.isLogined()}">
 	      <li class="nav-item dropdown">
 	        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
 	          내정보
@@ -107,8 +113,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	          <a class="nav-link" href="/usr/member/doLogout">로그아웃</a>
 	        </div>
 	      </li>
-	      </c:if>
+	      </c:when>
 	      
+	    <c:when test="${sessionId != null}">
+	      	<li class="nav-item">
+	          <a class="nav-link" href="#">'${sessionId}' 님</a>
+	        </li>
+		</c:when>
+	  </c:choose>
+	    
 	      <li class="nav-item dropdown">
 	        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
 	          PC 버전

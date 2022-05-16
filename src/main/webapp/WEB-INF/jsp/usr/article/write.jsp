@@ -7,7 +7,7 @@
 <c:set var="pageTitle" value="게시물 작성" />
 <%@ include file="../common/head.jspf"%>
 
-<div id='wrapper'>
+<div id='wrapper' style="">
 
 <section class="mt-5">
   <div class="container mx-auto px-3">
@@ -16,7 +16,7 @@
         <colgroup>
           <col width="200" />
         </colgroup>
-        <tbody>
+        <tbody style="width: 80%">
           <tr>
             <th>작성자</th>
             <td>

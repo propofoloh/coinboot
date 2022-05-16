@@ -47,6 +47,16 @@
           </tr>
         </thead>
         <tbody style="text-align: center;">
+        	<tr>
+        		<th style="font-weight: border; color:red;">이벤트!</th>
+        		<td colspan="3">
+        			<a class="btn-text-link block w-full truncate" style="font-weight: border; color:red;" 
+        			href="https://partner.bitget.com/bg/J5ST3D" target="_blank">
+        			<B>비트겟(Bitget)</B> 수수료 50% 할인, 158$ 증정금 혜택 이벤트!
+        			<br>안전한 코인 선물 거래소 <B>비트겟(Bitget)</B></a>
+        		</td>
+        	</tr>
+        
           <c:forEach var="article" items="${articles}">
             <tr>
               <th style="font-weight: normal;">${article.id}</th>

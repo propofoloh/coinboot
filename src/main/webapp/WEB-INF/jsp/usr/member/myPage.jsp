@@ -47,6 +47,18 @@
             </td>
           </tr>
           <tr>
+            <th>성별</th>
+            <td>
+              
+            </td>
+          </tr>
+          <tr>
+            <th>출생년도</th>
+            <td>
+              
+            </td>
+          </tr>
+          <tr>
             <th>비고</th>
             <td>
               <a href="../member/checkPassword?replaceUri=${Ut.getUriEncoded('../member/modify')}" class="btn btn-primary">회원정보수정</a>

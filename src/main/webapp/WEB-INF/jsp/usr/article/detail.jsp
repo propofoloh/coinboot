@@ -257,7 +257,7 @@ $().ready(function () {
 
 <script type="text/javascript">
 function shareTwitter() {
-    var sendText = "동까 유머 - 실시간 유머글";  // 전달할 텍스트
+    var sendText = "동까 유머 - 실시간 유머글\n#재미있는각종 #유머글모음사이트, #유머사이트추천, #심심할때, #유머모음, #재밌는글, #유머게시판, #bts, #아미, #콘서트";  // 전달할 텍스트
     var sendUrl = "https://dongga.ga/usr/article/detail?id=" + ${article.id} ; // 전달할 URL
     window.open("https://twitter.com/intent/tweet?text=" + sendText + "&url=" + sendUrl);
 }

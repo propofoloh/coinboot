@@ -25,5 +25,9 @@ public class CoinController {
 	public String moonxbt() {
 		return "usr/coin/moonxbt";
 	}
+	@RequestMapping("usr/coin/bitget")
+	public String bitget() {
+		return "usr/coin/bitget";
+	}
 
 }

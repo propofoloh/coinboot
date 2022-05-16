@@ -19,6 +19,10 @@
 		            <button type="submit" class="btn btn-primary">로그인</button>
 		            <button type="button" class="btn btn-outline btn-secondary" onclick="history.back();">뒤로가기</button>
 		        </div>
+				<!-- 네이버 로그인 창으로 이동 -->
+					<div id="naver_id_login" style="text-align:center"><a href="${url}">
+					<img width="223" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/></a>
+					</div>
 		        <div class="form-group" style="text-align: center;">
 		            <!-- <a href="#" class="ForgetPwd">비밀번호 찾기</a> -->
 		            <a href="../member/join">회원가입</a>

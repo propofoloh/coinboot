@@ -83,13 +83,13 @@ public class LoginController {
 		
 		model.addAttribute("result", apiResult);
 	     
-		return "login";
+		return "usr/member/naverLogin";
 	}
 	
 	//로그아웃
-	@RequestMapping(value = "/logout", method = { RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value = "/naverLogout", method = { RequestMethod.GET, RequestMethod.POST })
 	public String logout(HttpSession session)throws IOException {
-			System.out.println("여기는 logout");
+			System.out.println("여기는 naverLogout");
 			session.invalidate();
  
 	        
