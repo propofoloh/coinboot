@@ -127,5 +127,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <h1>${pageTitle}</h1>
     </div>
   </section>
+  
+  <!-- 네이버 애널리틱스 -->
+<script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
+<script type="text/javascript">
+if(!wcs_add) var wcs_add = {};
+wcs_add["wa"] = "10c6acd02625f20";
+if(window.wcs) {
+  wcs_do();
+}
+</script>
+
 </body>
 </html>
