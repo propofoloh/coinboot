@@ -3,6 +3,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="../css.csss">
 
+<!-- 애드센스 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1107226096880396"
+     crossorigin="anonymous"></script>
+-->
+     
 <div id='wrapper'>
 
 <c:set var="pageTitle" value="" />

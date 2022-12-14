@@ -11,6 +11,11 @@
 
 <link rel="stylesheet" href="../css.css">
 
+<!-- 애드센스 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1107226096880396"
+     crossorigin="anonymous"></script>
+-->
+
 <!-- 카톡 공유 -->
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 
@@ -74,6 +79,16 @@ video {
 	text-align: center; 
 	padding-top: 13px; 
 }
+.bottom_ad { 
+	position: fixed; 
+	bottom: 30px; 
+	left: 0px; 
+	width: 100%; 
+	height: 50px; 
+	z-index:100; 
+	border-top: 1px solid black; 
+	background-color: white 
+}
 </style>
 
 <%@ include file="../common/m.head.jspf"%>
@@ -125,9 +140,37 @@ video {
 	      </c:choose>
 		</div>
 
+             <div>
+				<!-- 동까유머 디스플레이 광고 
+				<ins class="adsbygoogle"
+				     style="display:block"
+				     data-ad-client="ca-pub-1107226096880396"
+				     data-ad-slot="6023335298"
+				     data-ad-format="auto"
+				     data-full-width-responsive="true"></ins>
+				<script>
+				     (adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+				-->
+              </div>
+              
 		<div style="margin-top: 50px; font-size: 15px;">
               		 ${article.forPrintBody}
 		</div>
+		
+              <div>
+				<!-- 동까유머 인피드 광고 
+				<ins class="adsbygoogle"
+				     style="display:block"
+				     data-ad-format="fluid"
+				     data-ad-layout-key="-62+c8+1z-16+aw"
+				     data-ad-client="ca-pub-1107226096880396"
+				     data-ad-slot="8849357920"></ins>
+				<script>
+				     (adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+				-->
+              </div>
 <br>
 <br>
 <br>
@@ -179,6 +222,12 @@ aria-expanded="false" aria-controls="collapseExample">
           </tr>
         </thead>
         <tbody style="text-align: center;">
+        <!-- 
+	       	<tr>
+	       		<td colspan="3">
+	       		</td>
+	       	</tr>
+        -->
           <c:forEach var="article" items="${articles}">
             <tr>
               <th style="font-weight: normal;">${article.id}</th>
@@ -195,7 +244,7 @@ aria-expanded="false" aria-controls="collapseExample">
         </tbody>
       </table>
       
-    <div class="page-menu mt-3" style="text-align: center;">
+    <div class="page-menu mt-3" style="margin: 0 auto; width: 50%;">
       <div class="btn-group justify-center">
         <c:set var="pageMenuArmLen" value="6" />
         <c:set var="startPage" value="${page - pageMenuArmLen >= 1 ? page - pageMenuArmLen : 1}" />
@@ -225,6 +274,26 @@ aria-expanded="false" aria-controls="collapseExample">
 </div>
 
 <!-- 하단 버튼 -->
+
+	<div class="bottom_ad">
+	<!-- 애드센 
+		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1107226096880396"
+		     crossorigin="anonymous"></script>
+	-->
+		     
+		<!-- 동까 다음글 버튼 아래 디스플레이 광고 
+		<ins class="adsbygoogle"
+		     style="display:block"
+		     data-ad-client="ca-pub-1107226096880396"
+		     data-ad-slot="9038098563"
+		     data-ad-format="horizontal"
+		     data-full-width-responsive="true"></ins>
+		<script>
+		     (adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+		-->
+	</div>
+	
 	<div class="bottom_menu">
 		<div>
 			<img onclick="history.back()" src="/img/back.png"/>

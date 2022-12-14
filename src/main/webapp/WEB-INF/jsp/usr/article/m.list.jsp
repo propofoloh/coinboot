@@ -5,6 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <link rel="stylesheet" href="../css.css">
 
+<!-- 애드센스 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1107226096880396"
+     crossorigin="anonymous"></script>
+-->
+     
 <head>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-222885751-2"></script>
@@ -36,13 +41,23 @@
           </tr>
         </thead>
         <tbody style="text-align: center;">
+        <!-- 
         	<tr>
-        		<th style="font-weight: border; color:red;">이벤트!</th>
-        		<td colspan="1">
-        			<a class="btn-text-link block w-full truncate" style="font-weight: border; color:red;" 
-        			href="https://partner.bitget.com/bg/J5ST3D" target="_blank">
-        			<B>비트겟(Bitget)</B> 수수료 50% 할인, 158$ 증정금 혜택 이벤트!
-        			<br>안전한 코인 선물 거래소 <B>비트겟(Bitget)</B></a>
+        	</tr>
+        -->
+        	<tr>
+        		<td colspan="3">
+        		<!-- 
+					<ins class="adsbygoogle"
+					     style="display:block"
+					     data-ad-format="fluid"
+					     data-ad-layout-key="-hq-h+2d-1q-1n"
+					     data-ad-client="ca-pub-1107226096880396"
+					     data-ad-slot="9051741745"></ins>
+					<script>
+					     (adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+					 -->
         		</td>
         	</tr>
         	

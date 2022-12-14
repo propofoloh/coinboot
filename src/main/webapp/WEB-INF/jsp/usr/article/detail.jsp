@@ -14,10 +14,6 @@
 <!-- 카톡 공유 -->
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 
-<!-- 애드센스 -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1107226096880396"
-     crossorigin="anonymous"></script>
-     
 <script>
   const params = {};
   params.id = parseInt('${param.id}');
@@ -118,9 +114,37 @@ a:active {
 	      </c:choose>
 		</div>
 
+             <div>
+				<!-- 동까유머 디스플레이 광고 
+				<ins class="adsbygoogle"
+				     style="display:block"
+				     data-ad-client="ca-pub-1107226096880396"
+				     data-ad-slot="6023335298"
+				     data-ad-format="auto"
+				     data-full-width-responsive="true"></ins>
+				<script>
+				     (adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+				-->
+              </div>
+              
 		<div id="contents" name="contents" style="margin-top: 50px; font-size: 15px;">
               		 ${article.forPrintBody}
 		</div>
+		
+              <div>
+				<!-- 동까유머 인피드 광고 
+				<ins class="adsbygoogle"
+				     style="display:block"
+				     data-ad-format="fluid"
+				     data-ad-layout-key="-62+c8+1z-16+aw"
+				     data-ad-client="ca-pub-1107226096880396"
+				     data-ad-slot="8849357920"></ins>
+				<script>
+				     (adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+				-->
+              </div>
 <br>
 <br>
 <br>
@@ -183,6 +207,12 @@ aria-expanded="false" aria-controls="collapseExample">
           </tr>
         </thead>
         <tbody style="text-align: center;">
+        <!-- 
+	       	<tr>
+	       		<td colspan="3">
+	       		</td>
+	       	</tr>
+		-->
           <c:forEach var="article" items="${articles}">
             <tr>
               <th style="font-weight: normal;">${article.id}</th>
@@ -200,7 +230,7 @@ aria-expanded="false" aria-controls="collapseExample">
         </tbody>
       </table>
       
-    <div class="page-menu mt-3" style="text-align: center;">
+    <div class="page-menu mt-3" style="margin: 0 auto; width: 80%;">
       <div class="btn-group justify-center">
         <c:set var="pageMenuArmLen" value="6" />
         <c:set var="startPage" value="${page - pageMenuArmLen >= 1 ? page - pageMenuArmLen : 1}" />

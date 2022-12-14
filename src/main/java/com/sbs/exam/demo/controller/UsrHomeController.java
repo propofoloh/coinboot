@@ -27,7 +27,6 @@ public class UsrHomeController {
 		return "usr/article/test";
 	}
 	
-	
 	@RequestMapping("/")
 	public String showRoot() {
 		return "redirect:/usr/home/main";
@@ -48,5 +47,10 @@ public class UsrHomeController {
 	        HttpServletRequest request, HttpServletResponse response)
 	                throws IOException {
 	    response.getWriter().write("User-agent: *\nDisallow: /\n#DaumWebMasterTool:418af4fc166821487ebccefc733155c52e2274550f380d820dd15302a80c33f9:+cYb3ZfWcYqter/+UhsNGQ==");
+	}
+	
+	@RequestMapping("/webapp/ads.txt")
+	public String Ads() {
+		return "redirect:ads.txt";
 	}
 }

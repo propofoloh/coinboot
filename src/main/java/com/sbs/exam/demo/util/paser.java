@@ -17,9 +17,9 @@ public class paser {
 		
 			java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
 
-			String url = "jdbc:mysql://ls-a8f0ab1c2fff58b463fa2f5db70ef70f92ff71ea.cur6vfnjyk64.ap-northeast-2.rds.amazonaws.com:3306/sb_c_2021_2nd_t";
+			String url = "jdbc:mysql://giserver.asuscomm.com:3306/sb_c_2021_2nd_t";
 			String user = "sb";
-			String password = "1234";
+			String password = "qwe123!@#";
 			
 			Connection conn = null;
 			Statement stmt = null;
@@ -34,7 +34,7 @@ public class paser {
 				conn = DriverManager.getConnection(url, user, password);
 				System.out.println("연결 성공");
 				
-				for(long i=15252094L; i<=15252094L; i ++) {
+				for(long i=15261574L; i<=15261574L; i ++) {
 				String URL = "https://www.jjang0u.com/board/view/fun/"  + i + "/1";
 				org.jsoup.Connection conn2 = Jsoup.connect(URL);
 				
