@@ -129,7 +129,22 @@ a:active {
               </div>
               
 		<div id="contents" name="contents" style="margin-top: 50px; font-size: 15px;">
+<!-- 애드핏 -->
+<ins class="kakao_ad_area" style="display:none;"
+data-ad-unit = "DAN-dB4AAxewhwwSBGKY"
+data-ad-width = "300"
+data-ad-height = "250"></ins>
+<script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+		
               		 ${article.forPrintBody}
+
+<!-- 애드핏 -->
+<ins class="kakao_ad_area" style="display:none;"
+data-ad-unit = "DAN-dB4AAxewhwwSBGKY"
+data-ad-width = "300"
+data-ad-height = "250"></ins>
+<script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+              		 
 		</div>
 		
               <div>

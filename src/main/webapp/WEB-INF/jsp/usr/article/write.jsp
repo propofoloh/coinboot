@@ -12,7 +12,7 @@
 <section class="mt-5">
   <div class="container mx-auto px-3">
     <form class="table-box-type-1" id="WriteForm" method="POST" action="../article/doWrite">
-      <table>
+      <table style="width:100%;">
         <colgroup>
           <col width="200" />
         </colgroup>

@@ -28,7 +28,6 @@
 	</style>
 </head>
 <body>
-
 	<div class="bottom_menu">
 		<div>
 			<img onclick="history.back()" src="/img/back.png"/>

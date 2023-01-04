@@ -87,7 +87,8 @@ video {
 	height: 50px; 
 	z-index:100; 
 	border-top: 1px solid black; 
-	background-color: white 
+	background-color: white;
+	margin-bottom: 19px;
 }
 </style>
 
@@ -155,7 +156,28 @@ video {
               </div>
               
 		<div style="margin-top: 50px; font-size: 15px;">
+<!-- 애드핏 -->
+<ins class="kakao_ad_area" style="display:none;"
+data-ad-unit = "DAN-dB4AAxewhwwSBGKY"
+data-ad-width = "300"
+data-ad-height = "250"></ins>
+<script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+
               		 ${article.forPrintBody}
+
+<!-- 애드핏 -->
+<ins class="kakao_ad_area" style="display:none;"
+data-ad-unit = "DAN-Jg8NF50cbip1SULj"
+data-ad-width = "320"
+data-ad-height = "100"></ins>
+<script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+
+<ins class="kakao_ad_area" style="display:none;"
+data-ad-unit = "DAN-rJHzRSsW6ZKje7Ak"
+data-ad-width = "320"
+data-ad-height = "50"></ins>
+<script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+
 		</div>
 		
               <div>
@@ -276,6 +298,13 @@ aria-expanded="false" aria-controls="collapseExample">
 <!-- 하단 버튼 -->
 
 	<div class="bottom_ad">
+<!-- 애드핏 -->	
+<ins class="kakao_ad_area" style="display:none;"
+data-ad-unit = "DAN-rJHzRSsW6ZKje7Ak"
+data-ad-width = "320"
+data-ad-height = "50"></ins>
+<script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+
 	<!-- 애드센 
 		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1107226096880396"
 		     crossorigin="anonymous"></script>

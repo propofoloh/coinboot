@@ -17,7 +17,7 @@
         <colgroup>
           <col width="200" />
         </colgroup>
-        <tbody>
+        <tbody style="width:100%;">
           <tr>
             <th>작성자</th>
             <td>

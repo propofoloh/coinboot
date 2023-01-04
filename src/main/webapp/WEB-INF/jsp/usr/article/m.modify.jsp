@@ -37,7 +37,7 @@
         <colgroup>
           <col width="200" />
         </colgroup>
-        <tbody>
+        <tbody style="width:100%;">
           <tr>
             <th>번호</th>
             <td>
