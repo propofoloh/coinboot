@@ -67,7 +67,7 @@
 <body>
   <form name="notice_form">
       <div id="divpop1" class="divpop">
-      	<a href="https://play.google.com/store/apps/details?id=com.a.test2" target="_blank">
+      	<a href="https://play.google.com/store/apps/details?id=com.a.test2&pli=1" target="_blank">
           <div class="title_area">
           	동까 유머 어플 출시!!
           </div>

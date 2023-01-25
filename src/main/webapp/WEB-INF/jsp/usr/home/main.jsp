@@ -18,6 +18,9 @@
    <br>
    <br>
    <a href="/usr/article/m.list?boardId=2">모바일 버전 - 유머 게시판 이동하기</a>
+   <br>
+   <br>
+   <a href="/usr/shorts/m.shortsList?boardId=3">모바일 버전 - 쇼츠 게시판 이동하기</a>
   </div>
   <img src="/img/appicon(popup).png" style="width:50%; height:50%; margin-top: 30px; margin-left:20%;"/>
 </section>

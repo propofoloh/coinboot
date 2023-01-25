@@ -3,7 +3,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, maximum-scale=1.0, user-scalable=no">
 
 <!-- 카톡, 네이버 -->
-<meta property="og:title" content="${article.title}" /> <!--웹페이지 title -->
+<meta property="og:title" content="${shorts.title}" /> <!--웹페이지 title -->
 <meta property="og:url" content="dongga.net"> <!--웹페이지 URL -->
 <meta property="og:type" content="website" />
 <meta property="og:image" content="/img/appicon(popup).png" /> 
@@ -11,6 +11,10 @@
 
 <link rel="stylesheet" href="../css.css">
 
+<!-- 애드센스 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1107226096880396"
+     crossorigin="anonymous"></script>
+     
 <!-- 카톡 공유 -->
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 
@@ -29,7 +33,7 @@
     
     localStorage.setItem(localStorageKey, true);
     
-    $.get('../article/doIncreaseHitCountRd', {
+    $.get('../shorts/doIncreaseHitCountRd', {
         id : params.id,
         ajaxMode : 'Y'
     }, function(data) {
@@ -53,57 +57,79 @@ img {
   object-fit: cover;
 }
 video {
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-    max-height: 100%;
-    max-width: 100%;
+  width: 100%;
+  height: auto%;
+  object-fit: cover;
 }
-a:hover {
-  color : red;
+.bottom_menu { 
+	position: fixed; 
+	bottom: 0px; 
+	left: 0px; 
+	width: 100%; 
+	height: 40px; 
+	z-index:100; 
+	border-top: 1px solid black; 
+	background-color: white 
 }
-a:active {
-  color : green
+.bottom_menu > div { 
+	float: left; 
+	width: 20%; 
+	height: 100%; 
+	text-align: center; 
+	padding-top: 0px; 
+}
+.bottom_ad { 
+	position: fixed; 
+	bottom: 30px; 
+	left: 0px; 
+	width: 100%; 
+	height: 50px; 
+	z-index:100; 
+	border-top: 1px solid black; 
+	background-color: white;
+	margin-bottom: 9px;
 }
 </style>
 
-<%@ include file="../common/head.jspf"%>
+<%@ include file="../common/m.head.jspf"%>
 <%@ include file="../common/noticPopup.jsp"%>
 
-  <div style="width:90%; margin : 0 auto; text-align:center; z-index: 1; position:relative;">
+<div class="">
+
+  <div style="width:95%; margin : 0 auto; text-align:center;">
     <div class="table-box-type-1" style="font-size: 25px;">
-    	<div id="title">
-    		${article.title}
+    	<div>
+    		${shorts.title}
     	</div>
     	<div  style="font-size:10px;">
-    		${article.extra__writerName}  
-    		${article.forPrintType2RegDate} 
-    		조회수 : ${article.hitCount}
+    		${shorts.extra__writerName}  
+    		${shorts.forPrintType2RegDate} 
+    		조회수 : ${shorts.hitCount}
     	</div>
     	<hr style="border: solid 1px gray;">
 <br>
-		<div style="text-align: right;">
+		<div style="float: right;">
+		
 		<c:if test="${rq.isLogined()}">
 	        <a class="btn btn-link" onclick="if ( confirm('작성자를 차단 하시겠습니까?') == false ) return false;"
-	          href="../article/doMemberBlind?memberId=${article.memberId}">작성자 차단</a>
+	          href="../shorts/doMemberBlind?memberId=${shorts.memberId}">작성자 차단</a>
 		</c:if>
     	  <c:if test="${rq.isLogined()}">
 	        <a class="btn btn-link" onclick="if ( confirm('불량 사용자를 신고를 하시겠습니까?') == false ) return false;"
-	          href="../article/doMemberBlind?memberId=${article.memberId}">불량 사용자 신고</a>
+	          href="../shorts/doMemberBlind?memberId=${shorts.memberId}">불량 사용자 신고</a>
 	      </c:if>
-	      <c:if test="${article.extra__actorCanModify}">
-	        <a class="btn btn-link" href="../article/modify?id=${article.id}">게시물 수정</a>
+	      <c:if test="${shorts.extra__actorCanModify}">
+	        <a class="btn btn-link" href="../shorts/modify?id=${shorts.id}">게시물 수정</a>
 	      </c:if>
-	      <c:if test="${article.extra__actorCanDelete}">
+	      <c:if test="${shorts.extra__actorCanDelete}">
 	        <a class="btn btn-link" onclick="if ( confirm('정말 삭제하시겠습니까?') == false ) return false;"
-	          href="../article/doDelete?id=${article.id}">게시물 삭제</a>
+	          href="../shorts/doDelete?id=${shorts.id}">게시물 삭제</a>
 	      </c:if>
-    	  <c:if test="${article.extra__actorCanDelete or rq.loginedMember.authLevel == '7'}">
+    	  <c:if test="${shorts.extra__actorCanDelete or rq.loginedMember.authLevel == '7'}">
 	        <a class="btn btn-link" onclick="if ( confirm('불량 게시물을 삭제하시겠습니까?') == false ) return false;"
-	          href="../article/doDelete?id=${article.id}">불량 게시물 삭제 및 차단[관리자]</a>
+	          href="../shorts/doDelete?id=${shorts.id}">불량 게시물 삭제 및 차단[관리자]</a>
 	      </c:if>
-	      
+      	
 	      <c:choose>
 		      <c:when test="${rq.isLogined()}">
 			      <%@ include file="../common/declaration.jsp"%>
@@ -128,23 +154,23 @@ a:active {
 				-->
               </div>
               
-		<div id="contents" name="contents" style="margin-top: 50px; font-size: 15px;">
+		<div style="margin-top: 50px; font-size: 15px;">
 <!-- 애드핏 -->
 <ins class="kakao_ad_area" style="display:none;"
 data-ad-unit = "DAN-dB4AAxewhwwSBGKY"
 data-ad-width = "300"
 data-ad-height = "250"></ins>
 <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
-		
-              		 ${article.forPrintBody}
+
+              		 ${shorts.forPrintBody}
 
 <!-- 애드핏 -->
 <ins class="kakao_ad_area" style="display:none;"
-data-ad-unit = "DAN-dB4AAxewhwwSBGKY"
-data-ad-width = "300"
-data-ad-height = "250"></ins>
+data-ad-unit = "DAN-Jg8NF50cbip1SULj"
+data-ad-width = "320"
+data-ad-height = "100"></ins>
 <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
-              		 
+
 		</div>
 		
               <div>
@@ -164,7 +190,7 @@ data-ad-height = "250"></ins>
 <br>
 <br>
 
-		<div id="sns">
+		<div id="contents">
 			<a id="btnKakao" class="link-icon kakao" href="javascript:shareKakao();">
 				<img src="/img/sns_kakao.png"/>
 			</a>
@@ -195,19 +221,8 @@ aria-expanded="false" aria-controls="collapseExample">
 	</div>
 </section>
 
-<div>
-
-	<div style="width: 100%; margin-top: 30px;">
-		<c:if test="${nextArticleId != null}"> 
-		 <a href="../article/detail?id=${nextArticleId}&page=${page}" style="margin-left: 25%;">이전글</a>
-		</c:if>
-		
-		<c:if test="${previousArticleId != null}">
-		 <a href="../article/detail?id=${previousArticleId}&page=${page}" style="margin-left: 40%;">다음글</a>
-		</c:if> 
-	</div>
- 
-<!-- <a href="/usr/article/list?boardId=2">목록</a> -->
+<div>	
+<!-- <a href="/usr/shorts/list?boardId=2">목록</a> -->
       <table class="table" style="table-layout: fixed;">
         <colgroup>
           <col width="20%" />
@@ -227,55 +242,106 @@ aria-expanded="false" aria-controls="collapseExample">
 	       		<td colspan="3">
 	       		</td>
 	       	</tr>
-		-->
-          <c:forEach var="article" items="${articles}">
+        -->
+          <c:forEach var="shorts" items="${articles}">
             <tr>
-              <th style="font-weight: normal;">${article.id}</th>
-              <td style="text-overflow:ellipsis; overflow:hidden; white-space:nowrap; color: blue;">
-               <!--  <a class="btn-text-link block w-full truncate" href="../article/detail?id=${article.id}&page=${page}"> -->
-               <a href="../article/detail?id=${article.id}&page=${page}">
-                  ${article.title}
+              <th style="font-weight: normal;">${shorts.id}</th>
+              <td style="text-overflow:ellipsis; overflow:hidden; white-space:nowrap;">
+                <a href="../shorts/m.shortsDetail?id=${shorts.id}&page=${page}">
+                  ${shorts.title}
                 </a>
               </td>
               <td style="font-size: 0.8em;">
-              ${article.forPrintType1RegDate}
+              ${shorts.forPrintType1RegDate}
               </td>
             </tr>
           </c:forEach>
         </tbody>
       </table>
       
-    <div class="page-menu mt-3" style="margin: 0 auto; width: 80%;">
+    <div class="page-menu mt-3" style="margin-left: 10px; width: 50%;">
       <div class="btn-group justify-center">
-        <c:set var="pageMenuArmLen" value="6" />
+        <c:set var="pageMenuArmLen" value="3" />
         <c:set var="startPage" value="${page - pageMenuArmLen >= 1 ? page - pageMenuArmLen : 1}" />
         <c:set var="endPage" value="${page + pageMenuArmLen <= pagesCount ? page + pageMenuArmLen : pagesCount}" />
        
-        <c:set var="pageBaseUri" value="list?boardId=2" />
+        <c:set var="pageBaseUri" value="m.list?boardId=2" />
         <c:set var="pageBaseUri" value="${pageBaseUri}&searchKeywordTypeCode=${param.searchKeywordTypeCode}" />
         <c:set var="pageBaseUri" value="${pageBaseUri}&searchKeyword=${param.searchKeyword}" />
         
         <c:if test="${startPage > 1}">
-          <a class="btn btn-primary btn-lg" href="${pageBaseUri}&page=1">1</a>
+          <a class="btn btn-primary btn-sm" href="${pageBaseUri}&page=1">1</a>
           <c:if test="${startPage > 2}">          
-            <a class="btn btn-primary btn-lg disabled">...</a>
+            <a class="btn btn-primary btn-sm disabled">...</a>
           </c:if>
         </c:if>
         <c:forEach begin="${startPage}" end="${endPage}" var="i">
-          <a class="btn btn-primary btn-lg ${page == i ? 'active' : ''}" href="${pageBaseUri}&page=${i}">${i}</a>          
+          <a class="btn btn-primary btn-sm ${page == i ? 'active' : ''}" href="${pageBaseUri}&page=${i}">${i}</a>          
         </c:forEach>
         <c:if test="${endPage < pagesCount}">
           <c:if test="${endPage < pagesCount - 1}">
-            <a class="btn btn-primary btn-lg disabled">...</a>
+            <a class="btn btn-primary btn-sm disabled">...</a>
           </c:if> 
-          <a class="btn btn-primary btn-lg" href="${pageBaseUri}&page=${pagesCount}">${pagesCount}</a>
+          <a class="btn btn-primary btn-sm" href="${pageBaseUri}&page=${pagesCount}">${pagesCount}</a>
         </c:if>
        </div>
       </div>
 </div>
 
+<!-- 하단 버튼 -->
 
+	<div class="bottom_ad">
+<!-- 애드핏
+<ins class="kakao_ad_area" style="display:none;"
+data-ad-unit = "DAN-rJHzRSsW6ZKje7Ak"
+data-ad-width = "320"
+data-ad-height = "50"></ins>
+<script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+-->
+<!-- 동까net하단광고 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:100%;height:50px"
+     data-ad-client="ca-pub-1107226096880396"
+     data-ad-slot="6012089010"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+	</div>
+	
+	<div class="bottom_menu">
+		<div>
+			<img onclick="history.back()" src="/img/back.png"/>
+		</div>
+		
+		<div>
+			<c:if test="${nextArticleId != null}">
+				 <a href="../shorts/m.shortsDetail?id=${nextArticleId}&page=${page}" style="margin-left: 25%;">
+					<img src="/img/up.png"/>
+				 </a>
+			</c:if>
+		</div>
+		
+		<div>
+			<c:if test="${previousArticleId != null}">
+				 <a href="../shorts/m.shortsDetail?id=${previousArticleId}&page=${page}" style="margin-left: 40%;">
+					<img src="/img/down.png"/>					 
+				 </a>
+			</c:if>
+		</div>
+		
+		<div>
+			<a href="/usr/member/myPage">
+				<img src="/img/face.png"/>
+			</a>
+		</div>
+		
+		<div>
+			<img src="/img/setting.png" />
+		</div>
+	</div>
 <%@ include file="../common/foot.jspf"%>
+</div>
 
 <script type="text/javascript">
 $().ready(function () {
@@ -303,14 +369,14 @@ $().ready(function () {
 <script type="text/javascript">
 function shareTwitter() {
     var sendText = "동까 유머 - 실시간 유머글\n#재미있는각종 #유머글모음사이트, #유머사이트추천, #심심할때, #유머모음, #재밌는글, #유머게시판, #bts, #아미, #콘서트";  // 전달할 텍스트
-    var sendUrl = "https://dongga.net/usr/article/detail?id=" + ${article.id} ; // 전달할 URL
+    var sendUrl = "https://dongga.net/usr/shorts/m.shortsDetail?id=" + ${shorts.id} ; // 전달할 URL
     window.open("https://twitter.com/intent/tweet?text=" + sendText + "&url=" + sendUrl);
 }
 </script>
 
 <script type="text/javascript">
 function shareFacebook() {
-    var sendUrl = "https://dongga.net/usr/article/detail?id=" + ${article.id} ; // 전달할 URL
+    var sendUrl = "https://dongga.net/usr/shorts/m.shortsDetail?id=" + ${shorts.id} ; // 전달할 URL
     window.open("http://www.facebook.com/sharer/sharer.php?u=" + sendUrl);
 }
 </script>
@@ -328,14 +394,14 @@ function shareKakao() {
     content: {
       //title: "동까 유머 - 실시간 유머글", // 보여질 제목
       //description: "재미있는 각종 유머글 모음 사이트, 유머 사이트 추천, 심심할 때,유머 모음, 재밌는 글, 유머 게시판", // 보여질 설명
-      //imageUrl: "https://dongga.net/usr/article/detail?id=" + ${article.id}, // 콘텐츠 URL
+      //imageUrl: "https://dongga.net/usr/shorts/shortsDetail?id=" + ${shorts.id}, // 콘텐츠 URL
     		  
       title: $('meta[property="og:title"]').attr( 'content' ),
       description: $('meta[property="og:description"]').attr( 'content' ),
       imageUrl: $( 'meta[property="og:image"]' ).attr( 'content' ),
       link: {
-         mobileWebUrl: "https://dongga.net/usr/article/m.detail?id=" + ${article.id},
-         webUrl: "https://dongga.net/usr/article/detail?id=" + ${article.id}
+         mobileWebUrl: "https://dongga.net/usr/shorts/m.shortsDetail?id=" + ${shorts.id},
+         webUrl: "https://dongga.net/usr/shorts/shortsDetail?id=" + ${shorts.id}
       }
     }
   });

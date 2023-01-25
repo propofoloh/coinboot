@@ -14,7 +14,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 
-public class linkPaser {
+public class linkShortsPaser {
 	
     public static void main(final String[] args) throws IOException{
     	
@@ -29,7 +29,7 @@ public class linkPaser {
 		ResultSet rs = null;
 		PreparedStatement pstmt = null;
     	
-        Document doc = Jsoup.connect("https://www.jjang0u.com/board/list/fun/1").get();//html 가져오기
+        Document doc = Jsoup.connect("https://www.jjang0u.com/board/list/funclip/218").get();//html 가져오기 220부터 역
     	//System.out.println(doc.toString()); //전체 html 출력
 
 	    Elements els = doc.select(".title a"); // class dv_input인 a 태그 전부 찾음
@@ -65,7 +65,7 @@ public class linkPaser {
             pstmt.setTimestamp(1, date);
             pstmt.setTimestamp(2, date);
             pstmt.setString(3, "1");
-            pstmt.setString(4, "2");
+            pstmt.setString(4, "3"); //쇼츠
             pstmt.setString(5, title);
             pstmt.setString(6, contents + "&nbsp");
             pstmt.setString(7, "100");

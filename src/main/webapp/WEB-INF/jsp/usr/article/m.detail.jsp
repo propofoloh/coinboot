@@ -4,18 +4,17 @@
 
 <!-- 카톡, 네이버 -->
 <meta property="og:title" content="${article.title}" /> <!--웹페이지 title -->
-<meta property="og:url" content="dongga.ga"> <!--웹페이지 URL -->
+<meta property="og:url" content="dongga.net"> <!--웹페이지 URL -->
 <meta property="og:type" content="website" />
 <meta property="og:image" content="/img/appicon(popup).png" /> 
 <meta property="og:description" content="재미있는 각종 유머글 모음 사이트, 유머 사이트 추천, 심심할 때,유머 모음, 재밌는 글, 유머 게시판" /> 
 
 <link rel="stylesheet" href="../css.css">
 
-<!-- 애드센스 
+<!-- 애드센스 -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1107226096880396"
      crossorigin="anonymous"></script>
--->
-
+     
 <!-- 카톡 공유 -->
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 
@@ -67,7 +66,7 @@ video {
 	bottom: 0px; 
 	left: 0px; 
 	width: 100%; 
-	height: 50px; 
+	height: 40px; 
 	z-index:100; 
 	border-top: 1px solid black; 
 	background-color: white 
@@ -77,7 +76,7 @@ video {
 	width: 20%; 
 	height: 100%; 
 	text-align: center; 
-	padding-top: 13px; 
+	padding-top: 0px; 
 }
 .bottom_ad { 
 	position: fixed; 
@@ -88,7 +87,7 @@ video {
 	z-index:100; 
 	border-top: 1px solid black; 
 	background-color: white;
-	margin-bottom: 19px;
+	margin-bottom: 9px;
 }
 </style>
 
@@ -170,12 +169,6 @@ data-ad-height = "250"></ins>
 data-ad-unit = "DAN-Jg8NF50cbip1SULj"
 data-ad-width = "320"
 data-ad-height = "100"></ins>
-<script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
-
-<ins class="kakao_ad_area" style="display:none;"
-data-ad-unit = "DAN-rJHzRSsW6ZKje7Ak"
-data-ad-width = "320"
-data-ad-height = "50"></ins>
 <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
 
 		</div>
@@ -266,9 +259,9 @@ aria-expanded="false" aria-controls="collapseExample">
         </tbody>
       </table>
       
-    <div class="page-menu mt-3" style="margin: 0 auto; width: 50%;">
+    <div class="page-menu mt-3" style="margin-left: 10px; width: 50%;">
       <div class="btn-group justify-center">
-        <c:set var="pageMenuArmLen" value="6" />
+        <c:set var="pageMenuArmLen" value="3" />
         <c:set var="startPage" value="${page - pageMenuArmLen >= 1 ? page - pageMenuArmLen : 1}" />
         <c:set var="endPage" value="${page + pageMenuArmLen <= pagesCount ? page + pageMenuArmLen : pagesCount}" />
        
@@ -298,29 +291,22 @@ aria-expanded="false" aria-controls="collapseExample">
 <!-- 하단 버튼 -->
 
 	<div class="bottom_ad">
-<!-- 애드핏 -->	
+<!-- 애드핏
 <ins class="kakao_ad_area" style="display:none;"
 data-ad-unit = "DAN-rJHzRSsW6ZKje7Ak"
 data-ad-width = "320"
 data-ad-height = "50"></ins>
 <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+-->
+<!-- 동까net하단광고 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:100%;height:50px"
+     data-ad-client="ca-pub-1107226096880396"
+     data-ad-slot="6012089010"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
-	<!-- 애드센 
-		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1107226096880396"
-		     crossorigin="anonymous"></script>
-	-->
-		     
-		<!-- 동까 다음글 버튼 아래 디스플레이 광고 
-		<ins class="adsbygoogle"
-		     style="display:block"
-		     data-ad-client="ca-pub-1107226096880396"
-		     data-ad-slot="9038098563"
-		     data-ad-format="horizontal"
-		     data-full-width-responsive="true"></ins>
-		<script>
-		     (adsbygoogle = window.adsbygoogle || []).push({});
-		</script>
-		-->
 	</div>
 	
 	<div class="bottom_menu">
@@ -373,7 +359,7 @@ $().ready(function () {
 		      
 		    }).then((result) => {
 		      if (result.isConfirmed) {
-		         window.location.href = 'https://dongga.ga/usr/member/login';
+		         window.location.href = 'https://dongga.net/usr/member/login';
 		      }
 		    })
 		  });
@@ -383,14 +369,14 @@ $().ready(function () {
 <script type="text/javascript">
 function shareTwitter() {
     var sendText = "동까 유머 - 실시간 유머글\n#재미있는각종 #유머글모음사이트, #유머사이트추천, #심심할때, #유머모음, #재밌는글, #유머게시판, #bts, #아미, #콘서트";  // 전달할 텍스트
-    var sendUrl = "https://dongga.ga/usr/article/m.detail?id=" + ${article.id} ; // 전달할 URL
+    var sendUrl = "https://dongga.net/usr/article/m.detail?id=" + ${article.id} ; // 전달할 URL
     window.open("https://twitter.com/intent/tweet?text=" + sendText + "&url=" + sendUrl);
 }
 </script>
 
 <script type="text/javascript">
 function shareFacebook() {
-    var sendUrl = "https://dongga.ga/usr/article/m.detail?id=" + ${article.id} ; // 전달할 URL
+    var sendUrl = "https://dongga.net/usr/article/m.detail?id=" + ${article.id} ; // 전달할 URL
     window.open("http://www.facebook.com/sharer/sharer.php?u=" + sendUrl);
 }
 </script>
@@ -408,14 +394,14 @@ function shareKakao() {
     content: {
       //title: "동까 유머 - 실시간 유머글", // 보여질 제목
       //description: "재미있는 각종 유머글 모음 사이트, 유머 사이트 추천, 심심할 때,유머 모음, 재밌는 글, 유머 게시판", // 보여질 설명
-      //imageUrl: "https://dongga.ga/usr/article/detail?id=" + ${article.id}, // 콘텐츠 URL
+      //imageUrl: "https://dongga.net/usr/article/detail?id=" + ${article.id}, // 콘텐츠 URL
     		  
       title: $('meta[property="og:title"]').attr( 'content' ),
       description: $('meta[property="og:description"]').attr( 'content' ),
       imageUrl: $( 'meta[property="og:image"]' ).attr( 'content' ),
       link: {
-         mobileWebUrl: "https://dongga.ga/usr/article/m.detail?id=" + ${article.id},
-         webUrl: "https://dongga.ga/usr/article/detail?id=" + ${article.id}
+         mobileWebUrl: "https://dongga.net/usr/article/m.detail?id=" + ${article.id},
+         webUrl: "https://dongga.net/usr/article/detail?id=" + ${article.id}
       }
     }
   });

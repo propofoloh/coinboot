@@ -100,7 +100,7 @@ $().ready(function () {
 		      
 		    }).then((result) => {
 		      if (result.isConfirmed) {
-		         window.location.href = 'https://dongga.ga/usr/member/login';
+		         window.location.href = 'https://dongga.net/usr/member/login';
 		      }
 		    })
 		  });
