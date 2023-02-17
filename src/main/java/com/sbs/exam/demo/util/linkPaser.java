@@ -29,15 +29,17 @@ public class linkPaser {
 		ResultSet rs = null;
 		PreparedStatement pstmt = null;
     	
-        Document doc = Jsoup.connect("https://www.jjang0u.com/board/list/fun/1").get();//html 가져오기
+	try {
+		int p = 310;
+		for(int i = 0; i < 2; i++) {
+
+        Document doc = Jsoup.connect("https://www.jjang0u.com/board/list/fun/" + p).get();//html 가져오기
     	//System.out.println(doc.toString()); //전체 html 출력
 
 	    Elements els = doc.select(".title a"); // class dv_input인 a 태그 전부 찾음
-	    	//Element els = doc.select(".dv_input a").get(0); //get(i)를통해 몇번째 요소 가져올수 있음
-	
-	try {
+	    //Element els = doc.select(".dv_input a").get(0); //get(i)를통해 몇번째 요소 가져올수 있음
 		
-		Class.forName("com.mysql.jdbc.Driver");
+	    Class.forName("com.mysql.jdbc.Driver");
 		System.out.println("드라이버 로딩 성공");
 		
 		conn = DriverManager.getConnection(db, user, password);
@@ -54,8 +56,10 @@ public class linkPaser {
 	        String URL = "https://www.jjang0u.com" + e.getElementsByAttribute("href").attr("href");
 	        org.jsoup.Connection conn2 = Jsoup.connect(URL);
 	        Document document = conn2.get();
+	        System.out.println("asdagfkjhadgkjsdhfas");
 			Element ele2 = document.select("section#post_content").get(0);
 			String contents = ele2.html();	
+			
 			System.out.println(ele2.html());
 			
 			//DB에 데이터를 넣음
@@ -75,6 +79,8 @@ public class linkPaser {
             pstmt.executeUpdate();
             System.out.println(sql + "\n*******************************************************************************");
 		    }
+	    p++;
+		}
 	    
 		} catch (IndexOutOfBoundsException e) {
 			// TODO Auto-generated catch block

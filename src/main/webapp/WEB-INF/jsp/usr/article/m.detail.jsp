@@ -291,14 +291,15 @@ aria-expanded="false" aria-controls="collapseExample">
 <!-- 하단 버튼 -->
 
 	<div class="bottom_ad">
-<!-- 애드핏
+<!-- 애드핏 -->
 <ins class="kakao_ad_area" style="display:none;"
 data-ad-unit = "DAN-rJHzRSsW6ZKje7Ak"
 data-ad-width = "320"
 data-ad-height = "50"></ins>
 <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
--->
+
 <!-- 동까net하단광고 -->
+<!-- 
 <ins class="adsbygoogle"
      style="display:inline-block;width:100%;height:50px"
      data-ad-client="ca-pub-1107226096880396"
@@ -306,7 +307,7 @@ data-ad-height = "50"></ins>
 <script>
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
-
+ -->
 	</div>
 	
 	<div class="bottom_menu">
