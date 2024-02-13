@@ -20,7 +20,7 @@ public class linkPaser {
     	
     	java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
     	
-		String db = "jdbc:mysql://giserver.asuscomm.com:3310/sb_c_2021_2nd_t";
+		String db = "jdbc:mysql://122.38.239.60:3310/sb_c_2021_2nd_t";
 		String user = "sb";
 		String password = "qwe123!@#";
 		
@@ -30,8 +30,8 @@ public class linkPaser {
 		PreparedStatement pstmt = null;
     	
 	try {
-		int p = 310;
-		for(int i = 0; i < 2; i++) {
+		int p = 1;
+		for(int i = 1; i < 10; i++) {
 
         Document doc = Jsoup.connect("https://www.jjang0u.com/board/list/fun/" + p).get();//html 가져오기
     	//System.out.println(doc.toString()); //전체 html 출력

@@ -83,7 +83,7 @@ public class MShortsController {
 
 	@RequestMapping("/m.shortsDetail")
 	public String mshowDetail(Model model, int id,
-			@RequestParam(defaultValue = "3") int boardId,
+			@RequestParam(defaultValue = "5") int boardId,
 			@RequestParam(defaultValue = "title,body") String searchKeywordTypeCode,
 			@RequestParam(defaultValue = "") String searchKeyword, @RequestParam(defaultValue = "1") int page) {
 		Shorts shorts = shortsService.getForPrintArticle(rq.getLoginedMemberId(), id);

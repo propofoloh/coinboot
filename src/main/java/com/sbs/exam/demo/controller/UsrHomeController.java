@@ -42,11 +42,11 @@ public class UsrHomeController {
 		return "redirect:robots.txt";
 	}
 */
-	@RequestMapping(value = { "/webapp/robots.txt", "/robots.txt" })
+	@RequestMapping(value = { "/webapp/Robots.txt", "/Robots.txt", "/robots.txt" })
 	public void robots(
 	        HttpServletRequest request, HttpServletResponse response)
 	                throws IOException {
-	    response.getWriter().write("User-agent: *\nDisallow: /\n#DaumWebMasterTool:418af4fc166821487ebccefc733155c52e2274550f380d820dd15302a80c33f9:+cYb3ZfWcYqter/+UhsNGQ==");
+	    response.getWriter().write("User-agent: *\nAllow: /\n#DaumWebMasterTool:b95a0c409465e0987709a93397179e195281ffafd100375360aa073492c8856d:IXoE9Sbxr5AafkHJRCBgzw==");
 	}
 	
 	@RequestMapping("/webapp/ads.txt")

@@ -31,6 +31,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <!-- 네이버 웹마스터 -->
 <meta name="naver-site-verification" content="ceaa8b0525f9fa9a06be473385a769bbe73ec459" />
+<meta name="naver-site-verification" content="82efbd92efaf9129c710db05eea2e375e7375f5b" />
 <!-- 구글 서치콘솔 -->
 <meta name="google-site-verification" content="-HbCanOlKB_u_vURAwx1s1GTtcoz-unUC94S95GZtCA" />
 <!-- 애드센스 propofoloh -->
@@ -61,6 +62,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	    <ul class="navbar-nav mr-auto">
 	      <li class="nav-item active">
 	        <a class="nav-link" href="/usr/article/m.list?boardId=2">유머 게시판<span class="sr-only">(current)</span></a>
+	      </li>
+	      <li class="nav-item active">
+	        <a class="nav-link" href="/usr/shorts/m.shortsList?boardId=3">쇼츠 게시판<span class="sr-only">(current)</span></a>
+	      </li>
+	      <li class="nav-item active">
+	        <a class="nav-link" href="/usr/coin/coinList?boardId=4">코인 게시판<span class="sr-only">(current)</span></a>
 	      </li>
 	      
 	      <c:if test="${rq.loginedMember.authLevel == '7' }">

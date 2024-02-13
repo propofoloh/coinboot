@@ -46,7 +46,7 @@ public class ShortsController {
 		this.rq = rq;
 	}
 
-	@RequestMapping("/list")
+	@RequestMapping("/shortsList")
 	public String showList(Model model, @RequestParam(defaultValue = "1") int boardId,
 			@RequestParam(defaultValue = "title,body") String searchKeywordTypeCode,
 			@RequestParam(defaultValue = "") String searchKeyword, @RequestParam(defaultValue = "1") int page) {
@@ -70,12 +70,12 @@ public class ShortsController {
 		model.addAttribute("articlesCount", articlesCount);
 		model.addAttribute("articles", articles);
 
-		return "usr/shorts/list";
+		return "usr/shorts/shortsList";
 	}
 
-	@RequestMapping("/detail")
+	@RequestMapping("/shortsDetail")
 	public String showDetail(Model model, int id,
-			@RequestParam(defaultValue = "3") int boardId,
+			@RequestParam(defaultValue = "5") int boardId,
 			@RequestParam(defaultValue = "title,body") String searchKeywordTypeCode,
 			@RequestParam(defaultValue = "") String searchKeyword, @RequestParam(defaultValue = "1") int page) {
 		Shorts shorts = shortsService.getForPrintArticle(rq.getLoginedMemberId(), id);
@@ -120,7 +120,7 @@ public class ShortsController {
 			}
 		}
 
-		return "usr/shorts/detail";
+		return "usr/shorts/shortsDetail";
 	}
 
 	@RequestMapping("/doIncreaseHitCountRd")
@@ -229,7 +229,7 @@ public class ShortsController {
 		int id = writeArticleRd.getData1();
 
 		if (Ut.empty(replaceUri)) {
-			replaceUri = Ut.f("../shorts/detail?id=%d", id);
+			replaceUri = Ut.f("../shorts/shortsDetail?id=%d", id);
 		}
 
 		return rq.jsReplace(Ut.f("%d번 글이 생성되었습니다.", id), replaceUri);
@@ -250,7 +250,7 @@ public class ShortsController {
 
 		shortsService.blindMember(memberId);
 
-		return rq.jsReplace(Ut.f("작성자를 차단하였습니다.", memberId), "../shorts/list");
+		return rq.jsReplace(Ut.f("작성자를 차단하였습니다.", memberId), "../shorts/shortsList");
 	}
 
 }

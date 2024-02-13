@@ -20,7 +20,7 @@ public class linkShortsPaser {
     	
     	java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
     	
-		String db = "jdbc:mysql://giserver.asuscomm.com:3310/sb_c_2021_2nd_t";
+		String db = "jdbc:mysql://122.38.239.60:3310/sb_c_2021_2nd_t";
 		String user = "sb";
 		String password = "qwe123!@#";
 		
@@ -29,13 +29,15 @@ public class linkShortsPaser {
 		ResultSet rs = null;
 		PreparedStatement pstmt = null;
     	
+	try {
+		int p = 1;
+		for(int i = 0; i < 5; i++) {
+		
         Document doc = Jsoup.connect("https://www.jjang0u.com/board/list/funclip/218").get();//html 가져오기 220부터 역
     	//System.out.println(doc.toString()); //전체 html 출력
 
 	    Elements els = doc.select(".title a"); // class dv_input인 a 태그 전부 찾음
 	    	//Element els = doc.select(".dv_input a").get(0); //get(i)를통해 몇번째 요소 가져올수 있음
-	
-	try {
 		
 		Class.forName("com.mysql.jdbc.Driver");
 		System.out.println("드라이버 로딩 성공");
@@ -75,6 +77,8 @@ public class linkShortsPaser {
             pstmt.executeUpdate();
             System.out.println(sql + "\n*******************************************************************************");
 		    }
+	    p++;
+		}
 	    
 		} catch (IndexOutOfBoundsException e) {
 			// TODO Auto-generated catch block

@@ -3,7 +3,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, maximum-scale=1.0, user-scalable=no">
 
 <!-- 카톡, 네이버 -->
-<meta property="og:title" content="${shorts.title}" /> <!--웹페이지 title -->
+<meta property="og:title" content="${coin.title}" /> <!--웹페이지 title -->
 <meta property="og:url" content="dongga.net"> <!--웹페이지 URL -->
 <meta property="og:type" content="website" />
 <meta property="og:image" content="/img/appicon(popup).png" /> 
@@ -33,7 +33,7 @@
     
     localStorage.setItem(localStorageKey, true);
     
-    $.get('../shorts/doIncreaseHitCountRd', {
+    $.get('../coin/doIncreaseHitCountRd', {
         id : params.id,
         ajaxMode : 'Y'
     }, function(data) {
@@ -99,12 +99,12 @@ video {
   <div style="width:95%; margin : 0 auto; text-align:center;">
     <div class="table-box-type-1" style="font-size: 25px;">
     	<div>
-    		${shorts.title}
+    		${coin.title}
     	</div>
     	<div  style="font-size:10px;">
-    		${shorts.extra__writerName}  
-    		${shorts.forPrintType2RegDate} 
-    		조회수 : ${shorts.hitCount}
+    		${coin.extra__writerName}  
+    		${coin.forPrintType2RegDate} 
+    		조회수 : ${coin.hitCount}
     	</div>
     	<hr style="border: solid 1px gray;">
 <br>
@@ -112,22 +112,22 @@ video {
 		
 		<c:if test="${rq.isLogined()}">
 	        <a class="btn btn-link" onclick="if ( confirm('작성자를 차단 하시겠습니까?') == false ) return false;"
-	          href="../shorts/doMemberBlind?memberId=${shorts.memberId}">작성자 차단</a>
+	          href="../coin/doMemberBlind?memberId=${coin.memberId}">작성자 차단</a>
 		</c:if>
     	  <c:if test="${rq.isLogined()}">
 	        <a class="btn btn-link" onclick="if ( confirm('불량 사용자를 신고를 하시겠습니까?') == false ) return false;"
-	          href="../shorts/doMemberBlind?memberId=${shorts.memberId}">불량 사용자 신고</a>
+	          href="../coin/doMemberBlind?memberId=${coin.memberId}">불량 사용자 신고</a>
 	      </c:if>
-	      <c:if test="${shorts.extra__actorCanModify}">
-	        <a class="btn btn-link" href="../shorts/modify?id=${shorts.id}">게시물 수정</a>
+	      <c:if test="${coin.extra__actorCanModify}">
+	        <a class="btn btn-link" href="../coin/modify?id=${coin.id}">게시물 수정</a>
 	      </c:if>
-	      <c:if test="${shorts.extra__actorCanDelete}">
+	      <c:if test="${coin.extra__actorCanDelete}">
 	        <a class="btn btn-link" onclick="if ( confirm('정말 삭제하시겠습니까?') == false ) return false;"
-	          href="../shorts/doDelete?id=${shorts.id}">게시물 삭제</a>
+	          href="../coin/doDelete?id=${coin.id}">게시물 삭제</a>
 	      </c:if>
-    	  <c:if test="${shorts.extra__actorCanDelete or rq.loginedMember.authLevel == '7'}">
+    	  <c:if test="${coin.extra__actorCanDelete or rq.loginedMember.authLevel == '7'}">
 	        <a class="btn btn-link" onclick="if ( confirm('불량 게시물을 삭제하시겠습니까?') == false ) return false;"
-	          href="../shorts/doDelete?id=${shorts.id}">불량 게시물 삭제 및 차단[관리자]</a>
+	          href="../coin/doDelete?id=${coin.id}">불량 게시물 삭제 및 차단[관리자]</a>
 	      </c:if>
       	
 	      <c:choose>
@@ -162,7 +162,7 @@ data-ad-width = "300"
 data-ad-height = "250"></ins>
 <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
 
-              		 ${shorts.forPrintBody}
+              		 ${coin.forPrintBody}
 
 <!-- 애드핏 -->
 <ins class="kakao_ad_area" style="display:none;"
@@ -222,7 +222,7 @@ aria-expanded="false" aria-controls="collapseExample">
 </section>
 
 <div>	
-<!-- <a href="/usr/shorts/list?boardId=2">목록</a> -->
+<!-- <a href="/usr/coin/list?boardId=2">목록</a> -->
       <table class="table" style="table-layout: fixed;">
         <colgroup>
           <col width="20%" />
@@ -243,16 +243,16 @@ aria-expanded="false" aria-controls="collapseExample">
 	       		</td>
 	       	</tr>
         -->
-          <c:forEach var="shorts" items="${articles}">
+          <c:forEach var="coin" items="${articles}">
             <tr>
-              <th style="font-weight: normal;">${shorts.id}</th>
+              <th style="font-weight: normal;">${coin.id}</th>
               <td style="text-overflow:ellipsis; overflow:hidden; white-space:nowrap;">
-                <a href="../shorts/m.shortsDetail?id=${shorts.id}&page=${page}">
-                  ${shorts.title}
+                <a href="../coin/coinDetail?id=${coin.id}&page=${page}">
+                  ${coin.title}
                 </a>
               </td>
               <td style="font-size: 0.8em;">
-              ${shorts.forPrintType1RegDate}
+              ${coin.forPrintType1RegDate}
               </td>
             </tr>
           </c:forEach>
@@ -265,7 +265,7 @@ aria-expanded="false" aria-controls="collapseExample">
         <c:set var="startPage" value="${page - pageMenuArmLen >= 1 ? page - pageMenuArmLen : 1}" />
         <c:set var="endPage" value="${page + pageMenuArmLen <= pagesCount ? page + pageMenuArmLen : pagesCount}" />
        
-        <c:set var="pageBaseUri" value="m.list?boardId=5" />
+        <c:set var="pageBaseUri" value="coinList?boardId=4" />
         <c:set var="pageBaseUri" value="${pageBaseUri}&searchKeywordTypeCode=${param.searchKeywordTypeCode}" />
         <c:set var="pageBaseUri" value="${pageBaseUri}&searchKeyword=${param.searchKeyword}" />
         
@@ -316,7 +316,7 @@ data-ad-height = "50"></ins>
 		
 		<div>
 			<c:if test="${nextArticleId != null}">
-				 <a href="../shorts/m.shortsDetail?id=${nextArticleId}&page=${page}" style="margin-left: 25%;">
+				 <a href="../coin/coinDetail?id=${nextArticleId}&page=${page}" style="margin-left: 25%;">
 					<img src="/img/up.png"/>
 				 </a>
 			</c:if>
@@ -324,7 +324,7 @@ data-ad-height = "50"></ins>
 		
 		<div>
 			<c:if test="${previousArticleId != null}">
-				 <a href="../shorts/m.shortsDetail?id=${previousArticleId}&page=${page}" style="margin-left: 40%;">
+				 <a href="../coin/coinDetail?id=${previousArticleId}&page=${page}" style="margin-left: 40%;">
 					<img src="/img/down.png"/>					 
 				 </a>
 			</c:if>
@@ -369,14 +369,14 @@ $().ready(function () {
 <script type="text/javascript">
 function shareTwitter() {
     var sendText = "동까 유머 - 실시간 유머글\n#재미있는각종 #유머글모음사이트, #유머사이트추천, #심심할때, #유머모음, #재밌는글, #유머게시판, #bts, #아미, #콘서트";  // 전달할 텍스트
-    var sendUrl = "https://dongga.net/usr/shorts/m.shortsDetail?id=" + ${shorts.id} ; // 전달할 URL
+    var sendUrl = "https://dongga.net/usr/coin/coinDetail?id=" + ${coin.id} ; // 전달할 URL
     window.open("https://twitter.com/intent/tweet?text=" + sendText + "&url=" + sendUrl);
 }
 </script>
 
 <script type="text/javascript">
 function shareFacebook() {
-    var sendUrl = "https://dongga.net/usr/shorts/m.shortsDetail?id=" + ${shorts.id} ; // 전달할 URL
+    var sendUrl = "https://dongga.net/usr/coin/coinDetail?id=" + ${coin.id} ; // 전달할 URL
     window.open("http://www.facebook.com/sharer/sharer.php?u=" + sendUrl);
 }
 </script>
@@ -394,14 +394,14 @@ function shareKakao() {
     content: {
       //title: "동까 유머 - 실시간 유머글", // 보여질 제목
       //description: "재미있는 각종 유머글 모음 사이트, 유머 사이트 추천, 심심할 때,유머 모음, 재밌는 글, 유머 게시판", // 보여질 설명
-      //imageUrl: "https://dongga.net/usr/shorts/shortsDetail?id=" + ${shorts.id}, // 콘텐츠 URL
+      //imageUrl: "https://dongga.net/usr/coin/coinDetail?id=" + ${coin.id}, // 콘텐츠 URL
     		  
       title: $('meta[property="og:title"]').attr( 'content' ),
       description: $('meta[property="og:description"]').attr( 'content' ),
       imageUrl: $( 'meta[property="og:image"]' ).attr( 'content' ),
       link: {
-         mobileWebUrl: "https://dongga.net/usr/shorts/m.shortsDetail?id=" + ${shorts.id},
-         webUrl: "https://dongga.net/usr/shorts/shortsDetail?id=" + ${shorts.id}
+         mobileWebUrl: "https://dongga.net/usr/coin/coinDetail?id=" + ${coin.id},
+         webUrl: "https://dongga.net/usr/coin/coinDetail?id=" + ${coin.id}
       }
     }
   });

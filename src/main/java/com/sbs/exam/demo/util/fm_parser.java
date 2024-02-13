@@ -18,7 +18,7 @@ public class fm_parser {
     	
     	java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
     	
-		String db = "jdbc:mysql://ls-a8f0ab1c2fff58b463fa2f5db70ef70f92ff71ea.cur6vfnjyk64.ap-northeast-2.rds.amazonaws.com:3306/sb_c_2021_2nd_t";
+		String db = "jdbc:mysql://122.38.239.60:3300/sb_c_2021_2nd_t";
 		String user = "sb";
 		String password = "1234";
 		
@@ -27,7 +27,7 @@ public class fm_parser {
 		ResultSet rs = null;
 		PreparedStatement pstmt = null;
     	
-        Document doc = Jsoup.connect("https://www.fmkorea.com/index.php?mid=best&page=3").get();//html 가져오기
+        Document doc = Jsoup.connect("https://www.fmkorea.com/index.php?mid=best&page=1").get();//html 가져오기
     	//System.out.println(doc.toString()); //전체 html 출력
 
 	    Elements els = doc.select(".title a"); // class dv_input인 a 태그 전부 찾음

@@ -60,16 +60,16 @@
         		</td>
         	</tr>
         	
-          <c:forEach var="shorts" items="${articles}">
+          <c:forEach var="coin" items="${articles}">
             <tr>
-              <th style="font-weight: normal;">${shorts.id}</th>
+              <th style="font-weight: normal;">${coin.id}</th>
               <td style="text-overflow:ellipsis; overflow:hidden; white-space:nowrap;">
-                <a class="btn-text-link block w-full truncate" href="../shorts/m.shortsDetail?id=${shorts.id}&page=${page}">
-                  ${shorts.title}
+                <a class="btn-text-link block w-full truncate" href="../coin/coinDetail?id=${coin.id}&page=${page}">
+                  ${coin.title}
                 </a>
               </td>
               <td style="font-size: 0.8em;">
-              ${shorts.forPrintType1RegDate}
+              ${coin.forPrintType1RegDate}
               </td>
             </tr>
           </c:forEach>
@@ -82,7 +82,7 @@
         <c:set var="startPage" value="${page - pageMenuArmLen >= 1 ? page - pageMenuArmLen : 1}" />
         <c:set var="endPage" value="${page + pageMenuArmLen <= pagesCount ? page + pageMenuArmLen : pagesCount}" />
        
-        <c:set var="pageBaseUri" value="m.list?boardId=5" />
+        <c:set var="pageBaseUri" value="coinList?boardId=4" />
         <c:set var="pageBaseUri" value="${pageBaseUri}&searchKeywordTypeCode=${param.searchKeywordTypeCode}" />
         <c:set var="pageBaseUri" value="${pageBaseUri}&searchKeyword=${param.searchKeyword}" />
         
