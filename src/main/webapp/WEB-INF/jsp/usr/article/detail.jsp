@@ -4,10 +4,11 @@
 
 <!-- 카톡, 네이버 -->
 <meta property="og:title" content="${article.title}" /> <!--웹페이지 title -->
+<title>${article.title}</title>
 <meta property="og:url" content="dongga.net"> <!--웹페이지 URL -->
 <meta property="og:type" content="website" />
 <meta property="og:image" content="/img/appicon(popup).png" /> 
-<meta property="og:description" content="재미있는 각종 유머글 모음 사이트, 유머 사이트 추천, 심심할 때,유머 모음, 재밌는 글, 유머 게시판" /> 
+<meta property="og:description" name="description" content="${article.title}, 재미있는 각종 유머글 모음 사이트, 유머 사이트 추천, 심심할 때,유머 모음, 재밌는 글, 유머 게시판" /> 
 
 <link rel="stylesheet" href="../css.css">
 

@@ -7,7 +7,7 @@
 <meta property="og:url" content="dongga.net"> <!--웹페이지 URL -->
 <meta property="og:type" content="website" />
 <meta property="og:image" content="/img/appicon(popup).png" /> 
-<meta property="og:description" content="재미있는 각종 유머글 모음 사이트, 유머 사이트 추천, 심심할 때,유머 모음, 재밌는 글, 유머 게시판" /> 
+<meta property="og:description" name="description" content="${article.title}, 재미있는 각종 유머글 모음 사이트, 유머 사이트 추천, 심심할 때,유머 모음, 재밌는 글, 유머 게시판" /> 
 
 <link rel="stylesheet" href="../css.css">
 
@@ -98,7 +98,7 @@ video {
 
   <div style="width:95%; margin : 0 auto; text-align:center;">
     <div class="table-box-type-1" style="font-size: 25px;">
-    	<div>
+    	<div id="title">
     		${article.title}
     	</div>
     	<div  style="font-size:10px;">
@@ -154,7 +154,7 @@ video {
 				-->
               </div>
               
-		<div style="margin-top: 50px; font-size: 15px;">
+		<div id="contents" style="margin-top: 50px; font-size: 15px;">
 <!-- 애드핏 -->
 <ins class="kakao_ad_area" style="display:none;"
 data-ad-unit = "DAN-dB4AAxewhwwSBGKY"

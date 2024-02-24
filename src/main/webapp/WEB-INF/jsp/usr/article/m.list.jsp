@@ -3,6 +3,11 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta property="og:title" content="재미있는 각종 유머글 모음 사이트, 유머 사이트 추천, 심심할 때,유머 모음, 재밌는 글, 유머 게시판" /> <!--웹페이지 title -->
+<meta property="og:url" content="dongga.net"> <!--웹페이지 URL -->
+<meta property="og:type" content="website" />
+<meta property="og:image" content="/img/appicon(popup).png" /> 
+<meta property="og:description" name="description" content="재미있는 각종 유머글 모음 사이트, 유머 사이트 추천, 심심할 때,유머 모음, 재밌는 글, 유머 게시판" /> 
 <link rel="stylesheet" href="../css.css">
 
 <!-- 애드센스 -->
@@ -63,7 +68,7 @@
           <c:forEach var="article" items="${articles}">
             <tr>
               <th style="font-weight: normal;">${article.id}</th>
-              <td style="text-overflow:ellipsis; overflow:hidden; white-space:nowrap;">
+              <td id="title" style="text-overflow:ellipsis; overflow:hidden; white-space:nowrap;">
                 <a class="btn-text-link block w-full truncate" href="../article/m.detail?id=${article.id}&page=${page}">
                   ${article.title}
                 </a>
